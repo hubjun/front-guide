@@ -1,0 +1,765 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>页面布局</title>
+<!-- layout.css 为框架、布局和组件类模板样式，经确认之后统一规范的样式才放进来，请不要随意修改。临时新增和自定义样式请写入style.css -->
+<link href="css/layout.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/no.css">
+<link href="css/ztree/zTreeStyle.css" rel="stylesheet"/>
+<script src="js/jquery-1.7.2.min.js"></script>
+<!-- 同理，common.js 为规范类模板样式，经确认之后统一规范的语句才放进来，请不要随意修改。临时新增和自定义语句请写入main.js -->
+<script src="js/common.js"></script>
+<script src="js/main.js"></script>
+<!-- 下面两个js为针对树形表格之用 -->
+<script src="js/treetable/jquery.treetable.js"></script>
+<script src="js/jquery.ztree.core-3.5.min.js"></script>
+<!-- 目录树控件需要复选框功能时才需要引用该js -->
+<script src="js/jquery.ztree.excheck-3.5.js"></script>
+<!-- 下面是滚动条插件的两个js -->
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/jquery.jscrollpane.min.js"></script>
+<SCRIPT type="text/javascript">
+  //滚动条插件初始化
+	$(function(){
+		$(".scroll-pane").jScrollPane({showArrows: true})
+		//下面是让滚动条淡出淡入的效果，暂不用
+	/*  var bars = '.jspHorizontalBar, .jspVerticalBar';
+		$('.scroll-pane').bind('jsp-initialised', function (event, isScrollable) {			
+			//hide the scroll bar on first load
+			$(this).find(bars).hide();		
+		}).jScrollPane().hover(		
+			//hide show scrollbar
+			function () {
+				$(this).find(bars).stop().fadeTo('fast', 0.9);
+			},
+			function () {
+				$(this).find(bars).stop().fadeTo('fast', 0);
+			}
+		);	*/			
+
+	});
+var setting2 = {
+            view: {
+                showLine: false
+            },
+            check: {
+                enable: true
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+
+        var zNodes2 =[
+            { id:1, pId:0, name:"2009级工管1班", open:true},
+            { id:11, pId:1, name:"姓名（用户名）", open:true},
+            { id:12, pId:1, name:"姓名（用户名）", open:true},
+            { id:13, pId:1, name:"姓名（用户名）", open:true},
+            { id:2, pId:0, name:"2009级工管2班", checked:true, open:true},
+            { id:21, pId:2, name:"姓名（用户名）"},
+            { id:22, pId:2, name:"姓名（用户名）", open:true},
+            { id:23, pId:2, name:"姓名（用户名）"}
+        ];
+        
+        var code;
+        
+        function setCheck() {
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+            py = $("#py").attr("checked")? "p":"",
+            sy = $("#sy").attr("checked")? "s":"",
+            pn = $("#pn").attr("checked")? "p":"",
+            sn = $("#sn").attr("checked")? "s":"",
+            type = { "Y":py + sy, "N":pn + sn};
+            zTree.setting.check.chkboxType = type;
+            showCode('setting.check.chkboxType = { "Y" : "' + type.Y + '", "N" : "' + type.N + '" };');
+        }
+        function showCode(str) {
+            if (!code) code = $("#code");
+            code.empty();
+            code.append("<li>"+str+"</li>");
+        }
+var log, className = "dark";
+function beforeDrag(treeId, treeNodes) {
+    return false;
+}
+function beforeEditName(treeId, treeNode) {
+    className = (className === "dark" ? "":"dark");
+    showLog("[ "+getTime()+" beforeEditName ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+    var zTree = $.fn.zTree.getZTreeObj("treeDemo2");
+    zTree.selectNode(treeNode);
+    return confirm("进入节点 -- " + treeNode.name + " 的编辑状态吗？");
+}
+function beforeRemove(treeId, treeNode) {
+    className = (className === "dark" ? "":"dark");
+    showLog("[ "+getTime()+" beforeRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+    var zTree = $.fn.zTree.getZTreeObj("treeDemo2");
+    zTree.selectNode(treeNode);
+    return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+}
+function onRemove(e, treeId, treeNode) {
+    showLog("[ "+getTime()+" onRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+}
+function beforeRename(treeId, treeNode, newName, isCancel) {
+    className = (className === "dark" ? "":"dark");
+    showLog((isCancel ? "<span style='color:red'>":"") + "[ "+getTime()+" beforeRename ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name + (isCancel ? "</span>":""));
+    if (newName.length == 0) {
+        alert("节点名称不能为空.");
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo2");
+        setTimeout(function(){zTree.editName(treeNode)}, 10);
+        return false;
+    }
+    return true;
+}
+function onRename(e, treeId, treeNode, isCancel) {
+    showLog((isCancel ? "<span style='color:red'>":"") + "[ "+getTime()+" onRename ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name + (isCancel ? "</span>":""));
+}
+function showRemoveBtn(treeId, treeNode) {
+    return !treeNode.isFirstNode;
+}
+function showRenameBtn(treeId, treeNode) {
+    return !treeNode.isLastNode;
+}
+function showLog(str) {
+    if (!log) log = $("#log");
+    log.append("<li class='"+className+"'>"+str+"</li>");
+    if(log.children("li").length > 8) {
+        log.get(0).removeChild(log.children("li")[0]);
+    }
+}
+function getTime() {
+    var now= new Date(),
+    h=now.getHours(),
+    m=now.getMinutes(),
+    s=now.getSeconds(),
+    ms=now.getMilliseconds();
+    return (h+":"+m+":"+s+ " " +ms);
+}
+
+var newCount = 1;
+function addHoverDom(treeId, treeNode) {
+    var sObj = $("#" + treeNode.tId + "_span");
+    if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+    var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+        + "' title='add node' onfocus='this.blur();'></span>";
+    sObj.after(addStr);
+    var btn = $("#addBtn_"+treeNode.tId);
+    if (btn) btn.bind("click", function(){
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo2");
+        zTree.addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, name:"new node" + (newCount++)});
+        return false;
+    });
+};
+function removeHoverDom(treeId, treeNode) {
+    $("#addBtn_"+treeNode.tId).unbind().remove();
+};
+function selectAll() {
+    var zTree = $.fn.zTree.getZTreeObj("treeDemo2");
+    zTree.setting.edit.editNameSelectAll =  $("#selectAll").attr("checked");
+}
+
+
+$(document).ready(function(){
+    $.fn.zTree.init($("#treeDemo2"), setting2, zNodes2);
+    setCheck();
+     $("#selectAll").bind("click", selectAll);
+});
+</SCRIPT>
+</head>
+<body>
+<div class="wrap">
+  <div class="container"> 
+    <!-- 头部元素 开始 --------------- -->
+    <div class="header">
+      <!-- <div class="logo"><a href="#" title="" class="offScreen"></a></div> -->
+      <div class="header-menu">
+        <ul>
+          <li class="logout"><a href="#">注销</a></li>
+          <li class="person"><a href="#">个人信息</a></li>
+          <li class="home"><a href="#">空间首页</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- 头部元素 结束 --------------- -->
+    <div class="content"> 
+      <!-- 内容左侧元素 开始 --------------- -->
+      <div class="left-con"> 
+        <!-- 左侧导航 开始 -->
+        <div class="left-con-header"></div>
+        <div class="mould-menu">
+          <dl>
+            <dt class="color-pink"><b class="ico-1"></b>课程</dt>
+            <dd><a class="cur" href="course-manager.html">课程库</a></dd>
+            <dd><a href="course-check.html">审核课程</a></dd>
+          </dl>
+          <dl>
+            <dt class="color-blue"><b class="ico-2"></b>教学计划与进程</dt>
+            <dd><a href="plan-search-index.html">教学计划主页</a></dd>
+            <dd><a href="plan-make-plan.html">制定教学计划</a></dd>
+            <dd><a href="plan-adjust-plan.html">调整教学计划</a></dd>
+            <dd><a href="plan-check-he.html">教学计划审核</a></dd>
+            <dd><a href="plan-check-pi.html">教学计划审批</a></dd>
+            <dd><a href="plan-make-process.html">制定教学进程</a></dd>
+            <dd><a href="plan-view-plan.html">查看教学计划</a></dd>
+          </dl>
+          <dl>
+            <dt class="color-green"><b class="ico-3"></b>开课管理</dt>
+            <dd><a href="begin-class.html">管理开课信息</a></dd>
+          </dl>
+          <dl>
+            <dt class="color-purple"><b class="ico-4"></b>排课管理</dt>
+            <dd><a href="pai-class.html">排课批次设置</a></dd>
+            <dd><a href="pai-class-add.html">新增排课批次</a></dd>
+            <dd><a href="pai-class-edit.html">修改排课批次</a></dd>
+            <dd><a href="pai-class-state.html">编排课表</a></dd>
+          </dl>
+          <dl>
+            <dt class="color-pink"><b class="ico-5"></b>信息查询</dt>
+            <dd><a href="info-free-message.html">空闲信息</a></dd>
+            <dd><a href="info-all-class.html">全校总课表</a></dd>
+            <dd><a href="info-some-class.html">分课表信息</a></dd>
+            <dd><a href="info-stud-class.html">学生课表查询</a></dd>
+          </dl>
+          <dl>
+            <dt class="color-blue"><b class="ico-6"></b>调课管理</dt>
+            <dd><a href="change-class.html">调课申请</a></dd>
+            <dd><a href="change-class-check-index.html">调课审核主页</a></dd>
+          </dl>
+          <dl>
+            <dt class="color-green"><b class="ico-7"></b>选课系统</dt>
+          </dl>
+          <dl>
+            <dt class="color-purple"><b class="ico-8"></b>成绩管理</dt>
+          </dl>
+          <dl>
+            <dt class="color-pink"><b class="ico-9"></b>教学评估</dt>
+          </dl>
+          <dl>
+            <dt class="color-blue"><b class="ico-10"></b>教材管理</dt>
+          </dl>
+          <dl>
+            <dt class="color-green"><b class="ico-11"></b>信息维护</dt>
+          </dl>
+        </div>
+        <!-- 左侧导航 结束 --> 
+      </div>
+      <!-- 内容左侧元素 结束 --------------- --> 
+      <!-- 内容右侧元素 开始 --------------- --> 
+      <div class="right-con"> 
+        <!-- 一级大标题 开始 -->
+        <div class="right-con-header">
+          <h1>搜索课程</h1>
+          <a class="back" href="###">返回</a>
+        </div>
+        <!-- 一级大标题 结束 --> 
+        <!-- 头部 筛选条件格式 开始--> <!-- 筛选条件这里，默认一行只放两个文本框，宽度默认202px，按钮只放”查询“这种。”导出表格“、”新增课程“等这种其他功能另起一行 -->
+        <div class="filter-con">
+          <input class="btn btn-srh" type="button" value="查询" />
+          <table width="100%">
+            <tbody>
+              <tr>
+                <th>课程名称：</th>
+                <td><input class="ipt-text" type="text" /></td>
+                <th>课程代码：</th>
+                <td><input class="ipt-text" type="text" /></td>
+              </tr>
+              <tr>
+                <th>课程类别：</th>
+                <td><div class="select-default">
+                    <select>
+                      <option>请选择</option>
+                      <option>必修课</option>
+                      <option>选修课</option>
+                    </select>
+                  </div></td>
+                <th>开课部门：</th>
+                <td><div class="select-default">
+                    <select>
+                      <option>请选择</option>
+                      <option>11111历史学1班1111111111</option>
+                      <option>历史学2班</option>
+                      <option>历史学3班</option>
+                      <option>历史学4班</option>
+                      <option>11111历史学1班1111111111</option>
+                      <option>历史学2班</option>
+                      <option>历史学3班</option>
+                      <option>历史学4班</option>
+                    </select>
+                  </div></td>
+              </tr>
+              <tr>
+                <th>审核情况：</th>
+                <td><div class="select-default">
+                    <select>
+                      <option>请选择</option>
+                      <option>未审核</option>
+                      <option>已通过</option>
+                      <option>未通过</option>
+                    </select>
+                  </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- 头部 筛选条件格式 结束--> 
+        <!-- 正式内容区域 开始 --- --><!-- 为使样式区分，请在正式内容区域right-con-bd内部或者上面或者平级加一个类来预防特殊的样式，如下面的course，代表课程栏目下的正式内容区域 -->
+        <div class="right-con-bd course"> 
+          <!-- 二级标题 开始 --> 
+          <!-- 少数情况下才有二级标题，这里只做示例。教务系统暂时不加h2.title，其他系统视情况而定。其他功能性按钮就放这里了，跟二级标题并排。标题居中，按钮居右，。 -->
+          <div class="main-hd">
+            <h2 class="title">二级标题（教务系统不加）</h2>
+            <input class="btn btn-small btn-act" type="button" value="批量删除" onClick="askPop()"/>
+            <input class="btn btn-small btn-act" type="button" value="新增课程" onClick="newClass()"/>
+          </div>
+          <!-- 二级标题 结束 -->
+          <div class="main-bd"> 
+            <!-- 框架性表格 开始 --><!-- 框架性表格外层class="table"触发表头颜色加粗等效果。表格table一般宽度100%,table上面加类color-on触发表格表头顶部2像素边框、每行换色，滑过换色和蓝色左边框等效果。带a-mgl触发”修改“、”删除“等这些td内a元素居中效果。框架性表格分下面这几种情况： --> 
+            <!-- 第一种：单独表头跨整行式 -->
+            <div class="table">
+              <table class="color-on" width="100%">
+                <thead>
+                  <tr>
+                    <th><label class="ckbox ck-all" for="ckx01">
+                        <input type="checkbox" id="ckx01" name="">
+                      </label></th>
+                    <th>课程代码</th>
+                    <th>课程名称</th>
+                    <th>学分</th>
+                    <th>课程类别</th>
+                    <th>审核情况</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><label class="ckbox" for="ckx02">
+                        <input type="checkbox" id="ckx02" name="ck-name">
+                      </label></td>
+                    <td>251414</td>
+                    <td>中国古代史（1）</td>
+                    <td>3</td>
+                    <td>必修课</td>
+                    <td>审核中</td>
+                    <td class="a-mgl"><a href="javascript:void(0);" onClick="viewClass()">查看</a>|<a href="javascript:void(0);" onClick="editClass()">修改</a>|<a href="javascript:void(0);" onClick="okPop()">删除</a>|<a href="javascript:void(0);" onClick="banPop()">送审</a></td>
+                  </tr>
+                  <tr>
+                    <td><label class="ckbox" for="ckx03">
+                        <input type="checkbox" id="ckx03" name="ck-name">
+                      </label></td>
+                    <td>251414</td>
+                    <td>中国古代史（1）</td>
+                    <td>3</td>
+                    <td>必修课</td>
+                    <td>未审核</td>
+                    <td class="a-mgl"><a href="javascript:void(0);">修改</a>|<a href="javascript:void(0);" onClick="errorPop()">删除</a>|<a href="javascript:void(0);">送审</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- 第二种：二行表头不干扰式 -->
+            <div class="table mt20">
+              <table class="color-on" width="100%">
+                <thead>
+                  <tr class="tr-bdr">
+                    <th colspan="2">总学分</th>
+                    <th colspan="2">公共基础课</th>
+                    <th colspan="2">公共选修课</th>
+                    <th colspan="2">规定选修课</th>
+                  </tr>
+                  <tr class="tr-bdr tr-one">
+                    <th>规定学分</th>
+                    <th>当前学分</th>
+                    <th>规定学分</th>
+                    <th>当前学分</th>
+                    <th>规定学分</th>
+                    <th>当前学分</th>
+                    <th>规定学分</th>
+                    <th>当前学分</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>100</td>
+                    <td>60</td>
+                    <td>100</td>
+                    <td>70</td>
+                    <td>120</td>
+                    <td>86</td>
+                    <td>150</td>
+                    <td>90</td>
+                  </tr>
+                  <tr>
+                    <td>120</td>
+                    <td>86</td>
+                    <td>150</td>
+                    <td>90</td>
+                    <td>100</td>
+                    <td>60</td>
+                    <td>100</td>
+                    <td>70</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- 第二种表格 结束 --> 
+            </div>
+            <!-- 第三种：二行表头合并列式 --><!-- 当表格太宽需要自适应宽度出现滚动条时，在外层加个div class="table-box"即可 -->
+            <!-- 这下面有滚动条插件体现的样式出现，满足的条件是：页头需要加载2个js，并有初始化语句，layout.css里有样式，下面希望出现滚动条的元素加上class="scroll-pane" -->
+            <div class="table-box scroll-pane mt20" style="height:200px;">
+              <div class="table">
+                <table class="color-on" width="100%">
+                  <thead>
+                    <tr class="tr-bdr tr-two">
+                      <th width="30" rowspan="2"><label class="ckbox ck-all" for="ckx04">
+                          <input type="checkbox" id="ckx04" name="">
+                        </label></th>
+                      <th rowspan="2">课程代码</th>
+                      <th rowspan="2">课程名称</th>
+                      <th rowspan="2">课程类别</th>
+                      <th colspan="5">学时数</th>
+                      <th rowspan="2">学分</th>
+                      <th colspan="6">开课学年学期</th>
+                      <th rowspan="2">操作</th>
+                    </tr>
+                    <tr class="tr-bdr tr-three">
+                      <th>总学时</th>
+                      <th>理论</th>
+                      <th>实验</th>
+                      <th>实践</th>
+                      <th>上机</th>
+                      <th colspan="2">2014-2015</th>
+                      <th colspan="2">2015-2016</th>
+                      <th colspan="2">2016-2017</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><label class="ckbox" for="ckx05">
+                          <input type="checkbox" id="ckx05" name="ck-name">
+                        </label></td>
+                      <td>251414</td>
+                      <td>中国古代史（1）</td>
+                      <td>选修课</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="okPop()">删除</a>|<a href="javascript:void(0);" onClick="banPop()">送审</a></td>
+                    </tr>
+                    <tr>
+                      <td><label class="ckbox" for="ckx06">
+                          <input type="checkbox" id="ckx06" name="ck-name">
+                        </label></td>
+                      <td>251414</td>
+                      <td>中国古代史（2）</td>
+                      <td>必修课</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="banPop()">修改</a>|<a href="javascript:void(0);" onClick="okPop()">删除</a>|<a href="javascript:void(0);" onClick="banPop()">送审</a></td>
+                    </tr>
+                    <tr>
+                      <td><label class="ckbox" for="ckx06">
+                          <input type="checkbox" id="ckx06" name="ck-name">
+                        </label></td>
+                      <td>251414</td>
+                      <td>中国古代史（2）</td>
+                      <td>必修课</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="banPop()">修改</a>|<a href="javascript:void(0);" onClick="okPop()">删除</a>|<a href="javascript:void(0);" onClick="banPop()">送审</a></td>
+                    </tr>
+                    <tr>
+                      <td><label class="ckbox" for="ckx06">
+                          <input type="checkbox" id="ckx06" name="ck-name">
+                        </label></td>
+                      <td>251414</td>
+                      <td>中国古代史（2）</td>
+                      <td>必修课</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="banPop()">修改</a>|<a href="javascript:void(0);" onClick="okPop()">删除</a>|<a href="javascript:void(0);" onClick="banPop()">送审</a></td>
+                    </tr>
+                    <tr>
+                      <td><label class="ckbox" for="ckx06">
+                          <input type="checkbox" id="ckx06" name="ck-name">
+                        </label></td>
+                      <td>251414</td>
+                      <td>中国古代史（2）</td>
+                      <td>必修课</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="banPop()">修改</a>|<a href="javascript:void(0);" onClick="okPop()">删除</a>|<a href="javascript:void(0);" onClick="banPop()">送审</a></td>
+                    </tr>
+                    <tr>
+                      <td><label class="ckbox" for="ckx06">
+                          <input type="checkbox" id="ckx06" name="ck-name">
+                        </label></td>
+                      <td>251414</td>
+                      <td>中国古代史（2）</td>
+                      <td>必修课</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="banPop()">修改</a>|<a href="javascript:void(0);" onClick="okPop()">删除</a>|<a href="javascript:void(0);" onClick="banPop()">送审</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- 第三种表格 结束 --> 
+              </div>
+            </div>
+            <h4 class="section-tit">第4种：treeTable树形表格形式</h4>
+            <!-- 第四种：树形表格形式 -->
+            <!-- 树形表格需引用treeTable.这个JS，table外层用需套样式名class="table"的div。table标签需要加上样式名id="tableTree" 。最最重要的是，还需要加载一小段js语句在表格读取之后，后面会有写 -->
+            <div class="table mt20">
+                <table width="100%" id="tableTree">
+                  <thead>
+                    <tr>
+                      <th>详情</th>
+                      <th>学年学期</th>
+                      <th>课程名称</th>
+                      <th>授课教师</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <!-- 接下来就是给每个tr赋序列了。
+                  data-tt-id="1" ，这里代表第一行，data-tt-id="1-2"这里代表这个tr是第1行tr下面的隐藏行，展开之后就是第2行，写成1-2。而data-tt-parent-id='1'这里代表这个tr是经由第1行展开的。 -->
+                    <tr data-tt-id="1">
+                      <td></td>
+                      <td>2014-09-06</td>
+                      <td>马克思主义哲学</td>
+                      <td>--</td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="setTeach()">指定教师</a></td>
+                    </tr>
+                    <!-- ============隐藏树形子表开始========== -->
+                    <tr data-tt-id="1-2" data-tt-parent-id='1'>
+                      <td colspan="5"><span class="fl ml10">上课年级部门专业：</span>
+                        <div class="table ml10 mr10 mb10">
+                          <table width="100%">
+                            <thead>
+                              <tr>
+                                <th>年级</th>
+                                <th>部门</th>
+                                <th>专业</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>2014</td>
+                                <td>幸福管理学院</td>
+                                <td>计算机专业</td>
+                              </tr>
+                              <tr>
+                                <td>2014</td>
+                                <td>幸福管理学院</td>
+                                <td>计算机专业</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div></td>
+                    </tr>
+                    <!-- =============隐藏树形子表 结束============ -->
+                    <tr data-tt-id="2">
+                      <td></td>
+                      <td>2015-07-06</td>
+                      <td>大学数学</td>
+                      <td>杨宋超</td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="setTeach()">修改教师</a></td>
+                    </tr>
+                    <tr data-tt-id="2-1" data-tt-parent-id='2'>
+                      <td colspan="5"><span class="fl ml10">上课年级部门专业：</span>
+                        <div class="table ml10 mr10 mb10">
+                          <table width="100%">
+                            <thead>
+                              <tr>
+                                <th>年级</th>
+                                <th>部门</th>
+                                <th>专业</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>2015</td>
+                                <td>幸福管理学院</td>
+                                <td>计算机专业</td>
+                              </tr>
+                              <tr>
+                                <td>2014</td>
+                                <td>幸福管理学院</td>
+                                <td>计算机专业</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div></td>
+                    </tr>
+                    <tr data-tt-id="3">
+                      <td></td>
+                      <td>2016-02-06</td>
+                      <td>大学就业指导</td>
+                      <td>杨宋超、陈志强</td>
+                      <td class="a-mgl"><a href="javascript:void(0);" onClick="setTeach()">修改教师</a></td>
+                    </tr>
+                    <tr data-tt-id="3-1" data-tt-parent-id='3'>
+                      <td colspan="5"><span class="fl ml10">上课年级部门专业：：</span>
+                        <div class="table ml10 mr10 mb10">
+                          <table width="100%">
+                            <thead>
+                              <tr>
+                                <th>年级</th>
+                                <th>部门</th>
+                                <th>专业</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>2016</td>
+                                <td>幸福管理学院</td>
+                                <td>计算机专业</td>
+                              </tr>
+                              <tr>
+                                <td>2014</td>
+                                <td>幸福管理学院</td>
+                                <td>计算机专业</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- 树状结构 初始化语句 --><!-- 有需要的页面才加，而且是加在页面下面 -->
+				<script>
+                   $("#tableTree").treetable({ expandable: true });
+                </script> 
+              </div>
+            <!-- 第四种：树形表格形式 --> 
+            <!-- 框架性表格 结束 --> 
+
+            <!--ztree树结构 开始-->
+            <div class="group-og mt20">
+                  <div class="l-tree">
+                    <div class="search"> 
+                      <b class="btn-sech"></b>
+                          <label for="key-word01">组织名称</label>
+                          <input type="text" value="" id="key-word01" class="ipt-text">
+                      </div>
+                      <div class="org-left">
+                        <div style="height:300px; width:200px; padding:10px; background:#fff; border:1px solid #d7d7d7; overflow:auto;">
+                            <ul id="treeDemo2" class="ztree"></ul>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="c-btns">
+                    <span class="btn-shift btn-left">添加&nbsp;&gt;</span>
+                    <span class="btn-shift btn-right">&lt;&nbsp;删除</span>
+                  </div>
+                  <div class="r-tree">
+                    <div class="focu-title mt10">选中组织</div>
+                    <div style="height:300px; width:200px; padding:10px; background:#fff; border:1px solid #d7d7d7; overflow:auto;">
+                        <ul id="treeDemo2" class="ztree"></ul>
+                      </div>
+                  </div>
+             </div>
+            <!--ztree树结构 结束 -->
+            <!-- 暂无数据 开始 -->
+            <div class="no-data">对不起，暂无数据！</div>
+            <!-- 暂无数据 结束 -->
+
+            <!-- 表底翻页和显示数据行 开始-->
+            <div class="pages">
+              <div class="filter-box">
+                <label>每页显示：</label>
+                <div class="select-default" width="60">
+                  <select>
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                  </select>
+                </div>
+                <label>条数据</label>
+              </div>
+              <div class="page"> <a class="page-prev disabled" href="javascript:void(0);"></a> <a class="num cur" href="javascript:void(0);">1</a> <a href="javascript:void(0);">2</a> <a href="javascript:void(0);">3</a> <span>...</span> <a href="javascript:void(0);">7</a> <a href="javascript:void(0);">8</a> <a href="javascript:void(0);">9</a> <a class="page-next" href="javascript:void(0)"></a> 到
+                <input type="text" class="ipt-text" value=""/>
+                页<a class="page-go" href="javascript:void(0);">GO</a> </div>
+            </div>
+            <!-- 表底翻页和显示数据行 结束--> 
+          </div>
+        </div>
+        <!-- 正式内容区域 结束 --- --> 
+        <!-- 弹窗内容 开始 -->
+        <div class="pop-cot" style="display:none"> 
+          <!-- 弹窗内容 结束 --> 
+        </div>
+        <!-- 内容右侧元素 结束 --------------- --> 
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!-- 底部元素 开始 --------------- -->
+    <div class="footer">
+      <p>深圳国泰安教育技术股份有限公司版权所有<br />
+        Copyright © 2014 GTA All rights reserved. 粤ICP备 05065871号</p>
+    </div>
+    <!-- 底部元素 结束 --------------- --> 
+  </div>
+</div>
+</body>
+</html>

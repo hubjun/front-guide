@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>前端规范参照表</title>
+<!-- layout.css 为框架、布局和组件类模板样式，经确认之后统一规范的样式才放进来，请不要随意修改。临时新增和自定义样式请写入style.css -->
+<link href="css/layout.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<!-- 真正引用项目时，请不要加载下面的no.css，这只是用来布局参考页面的而已 -->
+<link href="css/no.css" rel="stylesheet"/>
+<script src="js/jquery-1.7.2.min.js"></script>
+<!-- 同理，common.js 为规范类模板样式，经确认之后统一规范的语句才放进来，请不要随意修改。临时新增和自定义语句请写入main.js -->
+<script src="js/common.js"></script>
+<script src="js/main.js"></script>
+<!-- 下面两个js是为弹窗加载的 -->
+<script src="js/jquery.artDialog.source.js"></script>
+<script src="js/iframeTools.source.js"></script>
+</head>
+<body>
+<div class="wrap" id="Mback">
+  <div class="container"> <a href="#Mback" class="back-top">回到顶部</a>
+    <div class="header">
+      <h1 class="wisdom-title">前端规范参照表</h1>
+    </div>
+    <div class="wisdom-content">
+      <div class="wisdom-left">
+        <h2 class="wisdom-menu-title">目录</h2>
+        <div class="wisdom-menu-cot">
+          <dl>
+            <dt><a href="layout.html" target="_blank">一、框架说明</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mform">二、表单组件类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mcheck">三、表单验证类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mbtn">四、按钮组件类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="e.html#Mtab">五、tab标签切换类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="dialog.html">六、弹窗样式</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="ztree.html">七、树目录</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="treeTable.html">八、树目录</a></dt>
+          </dl>
+        </div>
+      </div>
+      <div class="wisdom-right">
+        <div class="section foreword-section">
+          <h3 class="section-tit">前言</h3>
+          <div class="section-cot">
+            <p class="remark">为节约前端和开发人员编码时间，方便其复用相应框架和组件，现统一制定针对“智慧校园”系列的前端规范说明书。如有不合理之处，请尽早提出并商议修改，一经确定，还请尽量遵循此规范。</p>
+          </div>
+        </div>
+        <!-- 弹窗样式 开始 -->
+        <div class="section dialog-section">
+          <h3 class="section-tit">六、弹窗样式</h3>
+          <div class="section-cot">
+            <p class="remark">首先，请保证页头加载了jquery.artDialog.source.js和iframeTools.source.js（顺序不能错），然后，再记得写弹窗的js执行语句</p>
+            <div class="para">
+              <h4 class="section-tit">1. 弹出本页面div</h4>
+              <p class="remark">弹窗内容的div先display：none在本页面合适的地方，通过点击按钮后加载进弹窗里面。为不使页面繁杂冗余，可以将<span class="import">弹窗的js执行语句写进js文件里面，我写在页面底部方便查看。</span></p>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td><input type="button" class="btn btn-mini btn-act" value="div形式1" onclick="popDiv01();"></td>
+                      <td><input type="button" class="btn btn-mini btn-act" value="div形式2" onclick="popDiv02();"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" class="btn btn-mini btn-act" value="询问类" onclick="askPop();"></td>
+                      <td><input type="button" class="btn btn-mini btn-act" value="警示类" onclick="banPop();"></td>
+                      <td><input type="button" class="btn btn-mini btn-act" value="确认类" onclick="okPop();"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="para">
+              <h4 class="section-tit">2. 弹窗以iframe方式加载另外一个页面</h4>
+              <p class="remark">这里以test.html为示例，被加载进弹窗里面。</p>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td><input type="button" class="btn btn-mini btn-act" value="iframe形式" onclick="popIframe01();"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="para">
+              <h4 class="section-tit">3. 信息提示</h4>
+              <p class="remark">三个信息提示可以作为标准案例，方法我写进main.js里了</p>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td><input type="button" class="btn btn-mini btn-act" value="询问类" onclick="askPop();"></td>
+                      <td><input type="button" class="btn btn-mini btn-act" value="警示类" onclick="banPop();"></td>
+                      <td><input type="button" class="btn btn-mini btn-act" value="确认类" onclick="okPop();"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 弹窗样式 结束 --> 
+      </div>
+      <div class="clear"></div>
+      <!-- 弹窗的div 开始 --><!-- 放在合适的位置便好，因为一开始都是隐藏的 -->
+      <div id="testPopDiv" style="display:none;">
+        <div class="cf">
+          <label class="txt">test：</label>
+          <input type="text" class="input">
+        </div>
+        <div class="cf">
+          <label class="txt">test：</label>
+          <input type="text" class="input">
+        </div>
+      </div>
+      <div id="testPopDiv02" style="display:none;">
+        <div class="cf">
+          <label class="txt">test：</label>
+          <input type="text" class="input">
+        </div>
+        <div class="cf">
+          <label class="txt">test：</label>
+          <input type="text" class="input">
+        </div>
+      </div>
+      <!-- 弹窗的div 结束 --> 
+    </div>
+  </div>
+</div>
+</body>
+<script>
+//加载当前页面的一个div，指定某个ID即可
+	function popDiv01(){
+		art.dialog({
+			title:"新增课程",  //这是标题
+			padding:'10px 15px',  //这是内补丁，默认为10px
+			content: document.getElementById('testPopDiv'), //这个ID就是页面里面那个藏着的div的ID
+			lock:true,   //这表示是否出现背景遮罩层
+			opacity:0.5,  //这表示遮罩层的背景透明度，默认这个数值，不修改吧
+			id:'newClass', //加了id可以防止多次弹出同一个窗口
+			ok:function(){
+			    	alert("确定");
+			    },
+			button: [  //自定义按钮
+					{ 
+						name: '送审', 
+						callback: function () {
+							alert('送审'); 
+							return true; 
+						}				
+					 }
+					]	
+		});
+	}
+	
+	//加载当前页面的一个div，不可用状态
+	function popDiv02(){
+		art.dialog.through({  //如果你需要穿透iframe框架，到最上面去，记得加这个.through
+			title:"不可用状态",
+			padding:'0',
+			content: document.getElementById('testPopDiv02'),
+			ok:function(){
+			    	alert("确定");
+			    },
+			button: [  //自定义按钮
+					{ 
+						name: '送审', 
+                        disabled: true				
+					 }
+					]	
+		});
+	}
+	
+	//以iframe形式加载另一个html内容进来
+	function popIframe01(){
+		art.dialog.open('test.html',
+			{
+				id:'test',
+				title:'iframe加载弹窗',
+				width:'800px',
+				height:'500px',
+				lock:true
+			}
+		);
+	}
+</script>
+</html>

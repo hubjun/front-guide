@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>前端规范参照表</title>
+<!-- layout.css 为框架、布局和组件类模板样式，经确认之后统一规范的样式才放进来，请不要随意修改。临时新增和自定义样式请写入style.css -->
+<link href="css/layout.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<!-- 真正引用项目时，请不要加载下面的no.css，这只是用来布局参考页面的而已 -->
+<link href="css/no.css" rel="stylesheet"/>
+<script src="js/jquery-1.7.2.min.js"></script>
+<!-- 同理，common.js 为规范类模板样式，经确认之后统一规范的语句才放进来，请不要随意修改。临时新增和自定义语句请写入main.js -->
+<script src="js/common.js"></script>
+<script src="js/main.js"></script>
+<!-- 下面两个js是为弹窗加载的 -->
+<script src="js/jquery.artDialog.source.js"></script>
+<script src="js/iframeTools.source.js"></script>
+</head>
+<body id="topBody">
+<div class="wrap" id="Mback">
+  <div class="container"> <a href="#Mback" class="back-top">回到顶部</a>
+    <div class="header">
+      <h1 class="wisdom-title">前端规范参照表</h1>
+    </div>
+    <div class="wisdom-content">
+      <div class="wisdom-left">
+        <h2 class="wisdom-menu-title">目录</h2>
+        <div class="wisdom-menu-cot">
+          <dl>
+            <dt><a href="layout.html" target="_blank">一、框架说明</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="#Mform">二、表单组件类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="#Mcheck">三、表单验证类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="#Mbtn">四、按钮组件类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="#Mtab">五、tab标签切换类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="弹窗.html">六、弹窗样式</a></dt>
+          </dl>
+        </div>
+      </div>
+      <div class="wisdom-right">
+        <iframe id="mainFrame" width="794" src="abc.html" scrolling="no" frameborder="0" ></iframe>
+        <script type="text/javascript"> 
+function reinitIframe(){ 
+var iframe = document.getElementById("mainFrame"); 
+try{ 
+var bHeight = iframe.contentWindow.document.body.scrollHeight; 
+var dHeight = iframe.contentWindow.document.documentElement.scrollHeight; 
+var height = Math.max(bHeight, dHeight); 
+iframe.height = height; 
+}catch (ex){} 
+} 
+window.setInterval("reinitIframe()", 200); 
+</script> 
+      </div>
+      <div class="clear"></div>
+      <!-- 弹窗的div 开始 --><!-- 放在合适的位置便好，因为一开始都是隐藏的 -->
+      <div id="testPopDiv" style="display:none;">
+        <div class="cf">
+          <label class="txt">test：</label>
+          <input type="text" class="input">
+        </div>
+        <div class="cf">
+          <label class="txt">test：</label>
+          <input type="text" class="input">
+        </div>
+      </div>
+      <!-- 弹窗的div 结束 --> 
+    </div>
+  </div>
+</div>
+</body>
+</html>

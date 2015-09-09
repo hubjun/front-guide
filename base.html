@@ -1,0 +1,643 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>表单组件表</title>
+<!-- layout.css 为框架、布局和组件类模板样式，经确认之后统一规范的样式才放进来，请不要随意修改。临时新增和自定义样式请写入style.css -->
+<link href="css/layout.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<!-- 真正引用项目时，请不要加载下面的no.css，这只是用来布局参考页面的而已 -->
+<link href="css/no.css" rel="stylesheet"/>
+<script src="js/jquery-1.7.2.min.js"></script>
+<!-- 同理，common.js 为规范类模板样式，经确认之后统一规范的语句才放进来，请不要随意修改。临时新增和自定义语句请写入main.js -->
+<script src="js/common.js"></script>
+<script src="js/main.js"></script><!-- 下面两个js为针对树形表格之用 -->
+<script src="js/framework.js"></script>
+<script src="js/treeTable.js"></script>
+<!-- 下面这个js为针对时间下拉控件之用 -->
+<script src="js/datePicker/WdatePicker.js"></script>
+</head>
+<body>
+<div class="wrap" id="Mback">
+  <div class="container"> <a href="#Mback" class="back-top">回到顶部</a>
+    <div class="header">
+      <h1 class="wisdom-title">前端规范参照表</h1>
+    </div>
+    <div class="wisdom-content">
+      <div class="wisdom-left">
+        <h2 class="wisdom-menu-title">目录</h2>
+        <div class="wisdom-menu-cot">
+          <dl>
+            <dt><a href="layout.html" target="_blank">一、框架说明</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mform">二、表单组件类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mcheck">三、表单验证类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mbtn">四、按钮组件类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mtab">五、tab标签切换类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="dialog.html">六、弹窗样式</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="ztree.html">七、树目录</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="treeTable.html">八、树目录</a></dt>
+          </dl>
+        </div>
+      </div>
+      <div class="wisdom-right">
+        <div class="section foreword-section">
+          <h3 class="section-tit">前言</h3>
+          <div class="section-cot">
+            <p class="remark">为节约前端和开发人员编码时间，方便其复用相应框架和组件，现统一制定针对“校园”系列的前端规范说明书。如有不合理之处，请尽早提出并商议修改，一经确定，还请尽量遵循此规范。</p>
+          </div>
+        </div>
+        <!-- 框架说明内容 开始 -->
+        <div class="section layout-section">
+          <h3 class="section-tit">一、框架说明</h3>
+          <div class="section-cot">
+            <p class="remark">根据产品部门提供的需求分析，“校园”系列项目为非响应式布局，再结合html布局的简易化、明了化的原则，框架布局方面决定采用固定宽度形式布局。为符合1024分辨率查看，将内容宽度固定为1004px。总体布局为，头部高90px，内容分左侧210px，右侧794px，底部90px。下面是组件类布局，参考框架类布局<a href="layout.html" target="_blank" style="color:#00f;"> 请点击这里 </a>。</p>
+          </div>
+        </div>
+        <!-- 框架说明内容 结束 --> 
+        
+        <!-- 表单组件类 开始 -->
+        <div class="section form-section" id="Mform">
+          <h3 class="section-tit">二、表单组件类</h3>
+          <div class="section-cot"> 
+            <!-- 输入框 开始 -->
+            <div class="para">
+              <h4 class="section-tit">1. 输入框</h4>
+              <p class="remark"> 输入框默认占用宽度为202px，高度32px，边框颜色#d6d6d6，输入状态边框颜色#595959。默认状态下可显示13个字。如果需要根据实际情况增加或者减少宽度，<span class="import">请在元素上直接加上属性width="xxx"，xxx即为其内容宽度。</span>下面展示原型：<br />
+              </p>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <th>默认200px：</th>
+                      <td><input type="text" class="ipt-text" value="添加class='ipt-text'" /></td>
+                      <th>宽度120px：</th>
+                      <td><input type="text" class="ipt-text" value="" width="120"/></td>
+                      <th>宽度90px：</th>
+                      <td><input type="text" class="ipt-text" value="实际宽度92px" width="90"/></td>
+                    </tr>
+                    <tr>
+                      <th>不可用状态：</th>
+                      <td><input type="text" class="ipt-text disabled" value="添加两个disabled即可" disabled/></td>
+                      <th>不可用状态：</th>
+                      <td><input type="text" class="ipt-text disabled" value="" width="120" disabled/></td>
+                      <th>不可用状态：</th>
+                      <td><input type="text" class="ipt-text disabled" value="实际宽度92px" width="90" disabled/></td>
+                    </tr>
+                    <tr>
+                      <th>焦点文字消失：</th>
+                      <td><input type="text" class="ipt-text focus-val" value="添加class=focus-val即可"/></td>
+                      <th>短一点的：</th>
+                      <td><input type="text" class="ipt-text focus-val" value="请输入..." width="120" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 输入框 结束 --> 
+            <!-- 下拉框 开始 -->
+            <div class="para"> 
+              <h4 class="section-tit">2. 下拉框</h4>
+              <p class="remark"> 下拉框默认占用宽度也是202px，高度320px下拉5个选项，样式保证与输入框一致。如果需要修改宽度与高度，与输入框一样，<span class="import">在外层.select-default 的div上加上属性width="xxx"和height="xxx"。</span><br />
+                下面展示原型：<br />
+              </p>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <th>默认高宽：</th>
+                      <td><div class="select-default">
+                          <select>
+                            <option>外面要加.select-default哦</option>
+                            <option>历史学1班</option>
+                            <option>历史学2班</option>
+                            <option>历史学3班</option>
+                            <option>历史学4班</option>
+                          </select>
+                        </div></td>
+                      <th>宽度120px：ul li</th>
+                      <td><div class="select-default" width="120">
+                          <select>
+                            <option>请选择</option>
+                            <option>历史学1班1111</option>
+                            <option>历史学2班2222</option>
+                            <option>历史学3班3333</option>
+                            <option>历史学4班4444</option>
+                          </select>
+                        </div></td>
+                      <th>高度78px：</th>
+                      <td><div class="select-default" width="90" height="78">
+                          <select>
+                            <option>请选择</option>
+                            <option>历史学1班</option>
+                            <option>历史学2班</option>
+                            <option>历史学3班</option>
+                            <option>历史学4班</option>
+                          </select>
+                        </div></td>
+                    </tr>
+                    <tr>
+                    <th>往上展开：</th>
+                      <td><div class="select-default select-up">
+                          <select>
+                            <option>再加个class=select-up</option>
+                            <option>历史学1班</option>
+                            <option>历史学2班</option>
+                            <option>历史学3班</option>
+                            <option>历史学4班</option>
+                          </select>
+                        </div></td>
+                      <th>宽度120px：</th>
+                      <td><div class="select-default select-up" width="120">
+                          <select>
+                            <option>请选择</option>
+                            <option>历史学1班</option>
+                            <option>历史学2班</option>
+                            <option>历史学3班</option>
+                            <option>历史学4班</option>
+                          </select>
+                        </div></td>
+                      <th>高度78px：</th>
+                      <td><div class="select-default select-up" width="90" height="78">
+                          <select>
+                            <option>请选择</option>
+                            <option>历史学1班</option>
+                            <option>历史学2班</option>
+                            <option>历史学3班</option>
+                            <option>历史学4班</option>
+                          </select>
+                        </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 下拉框 结束 --> 
+            <!-- 时间下拉控件 开始 -->
+            <div class="para">
+              <h4 class="section-tit">3. 时间下拉控件</h4>
+              <p class="remark">页头需要加载WdatePicker.js，css自动会加载进去，<span class="import"> WdatePicker({position:{left:x,top:x}})可以确定位置 </span>，控件包在存放js/datePicker。参数说明见：http://www.my97.net/dp/demo/</p>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <th>时间控件样式：</th>
+                      <td><div class="drop-down">
+                            <b class="down-ico" onClick="WdatePicker({el:'ti-ico'})"></b>
+                            <input class="ipt-text Wdate" id="ti-ico" type="text" value="属性是readonly" onClick="WdatePicker()" readonly />
+                          </div></td>
+                  <th>不可用状态：</th>
+                  <td colspan="3"><div class="drop-down"><b class="down-ico disabled"></b>
+                    <input class="ipt-text" type="text" value="属性是disabled" disabled>
+                  </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 时间下拉控件 结束 -->
+            <!-- 搜索框 开始 -->
+            <div class="para">
+              <h4 class="section-tit">4. 搜索框</h4>
+              <p class="remark">同样，搜索框默认占宽202px，高度32px。这个就不提供自适应宽度了，要改就加个样式单独改css就好。</p>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <th>默认200px：</th>
+                      <td><div class="search"> <b class="btn-sech"></b>
+                          <label for="key-word01">搜索请输入关键词...</label>
+                          <input type="text" class="ipt-text" id="key-word01" value=""/>
+                        </div></td>
+                      <th>不可用状态：</th>
+                      <td><div class="search disabled"> <b class="btn-sech"></b>
+                          <label for="key-word02">也是要有两个disabled哦</label>
+                          <input type="text" class="ipt-text" id="key-word02" value="" disabled/>
+                        </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 搜索框 结束 --> 
+            <!-- 文本域 开始 -->
+            <div class="para">
+              <h4 class="section-tit">5. 文本域</h4>
+              <p class="remark">文本域的高度和宽度就要视情况而定了，根据实际情况修改width和height即可，一般会出现在表格的td里。</p>
+              <div class="remark">
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <th valign="top">请给与评价：</th>
+                      <td><textarea>评价呀！</textarea></td>
+                    </tr>
+                    <tr>
+                      <th valign="top">查看评价：</th>
+                      <td><textarea class="disabled" disabled>无图无真相，差评！同样也是两个disabled哦</textarea></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 文本域 结束 --> 
+            <!-- 单选、复选框 开始 -->
+            <div class="para">
+              <h4 class="section-tit">6. 单选、复选框</h4>
+              <p class="remark">原生的单选、复选框存在，只是透明度变成0看不见，点击后是有状态变更的，而且背景也随之更换。</p>
+              <div class="remark Mcheck">
+                <table width="100%" class="exam">
+                  <tbody>
+                    <tr>
+                      <th>单选框：</th>
+                      <td><div class="radios">
+                          <label class="radio radio-ed" for="rdo01">
+                            <input type="radio" id="rdo01" name="rdo-cls" checked/>
+                            必修课</label>
+                          <label class="radio" for="rdo02">
+                            <input type="radio" value="" id="rdo02" name="rdo-cls"/>
+                            选修课</label>
+                        </div></td>
+                      <td>label上的class=radio是常驻的。而radio-ed即表示选中状态checked；</td>
+                    </tr>
+                    <tr>
+                      <th>不可用状态：</th>
+                      <td><div class="radios">
+                          <label class="radio disabled" for="rdo03">
+                            <input type="radio" id="rdo03" name="rdo-clss" disabled/>
+                            必修课</label>
+                          <label class="radio radio-ed disabled" for="rdo04">
+                            <input type="radio" value="" id="rdo04" name="rdo-clss" checked disabled/>
+                            不修课</label>
+                        </div></td>
+                      <td>label上面一个disabled，input上面一个disabled。</td>
+                    </tr>
+                    <tr>
+                      <th>复选框：</th>
+                      <td><label class="ckbox ckbox-ed" for="ckx01">
+                          <input type="checkbox" id="ckx01" name="" checked/>
+                          语文课</label>
+                        <label class="ckbox" for="ckx02">
+                          <input type="checkbox" id="ckx02" name=""/>
+                          数学课</label></td>
+                      <td>label上的class=ckbox是常驻的。而ckbox-ed即表示选中状态checked；</td>
+                    </tr>
+                    <tr>
+                      <th>不可用状态：</th>
+                      <td><label class="ckbox disabled" for="ckx03">
+                          <input type="checkbox" id="ckx03" name="" disabled/>
+                          电影课</label>
+                        <label class="ckbox ckbox-ed disabled" for="ckx04">
+                          <input type="checkbox" id="ckx04" name="" checked disabled/>
+                          不上课</label></td>
+                      <td>同样，label上面一个disabled，input上面一个disabled。</td>
+                    </tr>
+                    <tr>
+                      <th><label class="ckbox ck-all" for="ckx05">
+                          <input type="checkbox" id="ckx05" name="">
+                          全选</label></th>
+                      <td colspan="2"><label class="ckbox" for="ckx06">
+                          <input type="checkbox" id="ckx06" name="ck-name" />
+                          化学课</label>
+                        <label class="ckbox ckbox-ed" for="ckx07">
+                          <input type="checkbox" id="ckx07" name="ck-name" checked>
+                          地理课</label>
+                        <label class="ckbox" for="ckx08">
+                          <input type="checkbox" id="ckx08" name="ck-name" />
+                          政治课</label>
+                        <label class="ckbox" for="ckx09">
+                          <input type="checkbox" id="ckx09" name="ck-name" />
+                          生物课</label>
+                        <label class="ckbox ckbox-ed" for="ckx10">
+                          <input type="checkbox" id="ckx10" name="ck-name" checked/>
+                          电影课</label></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3">全选这里是用了name来标记每个选框，其实也可以用class的。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 单选、复选框 结束 --> 
+          </div>
+        </div>
+        <!-- 表单组件类 结束 --> 
+        
+        <!-- 表单验证类 开始 -->
+        <div class="section check-section" id="Mcheck">
+          <h3 class="section-tit">三、表单验证类</h3>
+          <div class="section-cot">
+            <p class="remark">目前表单验证类针对这四种情况：<span class="import">输入框、下拉框、搜索框、文本域。</span>注意要点是给<span class="import">最相近的父级元素加上class="pst-rela"</span>。开发根据实际情况结合验证插件使用。</p>
+            <p class="remark">CSS样式请参见：mould.css 第 278-300 行； 无js交互。</p>
+            <!-- 表单验证 开始 -->
+            <div class="remark">
+              <table class="exam" width="100%">
+                <tbody>
+                  <tr>
+                    <th>输入框：</th>
+                    <td class="pst-rela"><input type="text" class="ipt-text" value="" width="120"/>
+                      <div class="tips-text"> <b class="ico-left"></b> <b class="ico-top"></b> 课程代码必须大于0！ </div></td>
+                    <th>搜索框：</th>
+                    <td class="pst-rela"><div class="select-default" width="130">
+                        <select>
+                          <option>请选择</option>
+                          <option>历史学1班</option>
+                          <option>历史学2班</option>
+                          <option>历史学3班</option>
+                          <option>历史学4班</option>
+                        </select>
+                      </div>
+                      <div class="tips-text"> <b class="ico-left"></b> <b class="ico-top"></b> 必须选择班级，否则无法进行操作，请选择！ </div></td>
+                    <th>搜索框：</th>
+                    <td class="pst-rela"><div class="search"> <b class="btn-sech"></b>
+                        <label for="key-word03">搜索请输入关键词...</label>
+                        <input type="text" class="ipt-text" id="key-word03" value=""/>
+                      </div>
+                      <div class="tips-text"> <b class="ico-left"></b> <b class="ico-top"></b> 请不要输入非法字符！ </div></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table width="100%" style="margin:60px 0 40px;">
+                <tbody>
+                  <tr>
+                    <th valign="top">文本域：</th>
+                    <td class="pst-rela"><textarea>不想填！</textarea>
+                      <div class="tips-text"> <b class="ico-left"></b> <b class="ico-top"></b>评价项目是必填项！</div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- 表单验证 结束 --> 
+          </div>
+        </div>
+        <!-- 表单验证类 结束 --> 
+        
+        <!-- 按钮组件类 开始 -->
+        <div class="section btn-section" id="Mbtn">
+          <h3 class="section-tit">四、按钮组件类</h3>
+          <div class="section-cot">
+            <p class="remark">按钮有4种型号：<span class="import">迷你型、小型、默认型、大型</span>，4种状态：<span class="import">正常、滑过、点击、不可用</span>。至于type=""的类型，或者是用input还是span还是button，大家就按实际情况自行更改吧，样式不会变的。</p>
+            <p class="remark">CSS样式请参见：mould.css 第 278-300 行； 无js交互。</p>
+            <!-- 功能型按钮 开始 -->
+            <div class="para">
+              <h4 class="section-tit">1. 添加/上传等功能型按钮</h4>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td>型号</td>
+                      <td><input type="button" class="btn btn-mini btn-act" value="迷你"/></td>
+                      <td><span class="btn btn-small btn-act">小型</span></td>
+                      <td><button class="btn btn-default btn-act">默认</button></td>
+                      <td><input type="submit" class="btn btn-big btn-act" value="超大型"/></td>
+                    </tr>
+                    <tr>
+                      <td>不可用状态</td>
+                      <td><input type="button" class="btn btn-mini btn-act disabled" value="迷你"/></td>
+                      <td><input type="button" class="btn btn-small btn-act disabled" value="小型号"/></td>
+                      <td><input type="button" class="btn btn-default btn-act disabled" value="默认型号的"/></td>
+                      <td><input type="button" class="btn btn-big btn-act disabled" value="超大型"/></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 功能型按钮 结束 --> 
+            <!-- 确认型按钮 开始 -->
+            <div class="para">
+              <h4 class="section-tit">2. 保存/确认等存储型按钮</h4>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td>型号</td>
+                      <td><input type="submit" class="btn btn-mini btn-save" value="迷你型"/></td>
+                      <td><input type="submit" class="btn btn-small btn-save" value="小型"/></td>
+                      <td><input type="submit" class="btn btn-default btn-save" value="默认型"/></td>
+                      <td><input type="submit" class="btn btn-big btn-save" value="超大型"/></td>
+                    </tr>
+                    <tr>
+                      <td>不可用状态</td>
+                      <td><input type="submit" class="btn btn-mini btn-save disabled" value="迷你型"/></td>
+                      <td><input type="submit" class="btn btn-small btn-save disabled" value="小型"/></td>
+                      <td><input type="submit" class="btn btn-default btn-save disabled" value="默认型"/></td>
+                      <td><input type="submit" class="btn btn-big btn-save disabled" value="超大型"/></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 确认型按钮 结束 --> 
+            <!-- 撤消型按钮 开始 -->
+            <div class="para">
+              <h4 class="section-tit">3. 查询按钮</h4>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td>就一个型号</td>
+                      <td><input type="button" class="btn btn-srh" value="查询"/></td>
+                      <td><input type="button" class="btn btn-srh" value="查询"/></td>
+                      <td><input type="button" class="btn btn-srh" value="查询"/></td>
+                      <td><input type="button" class="btn btn-srh" value="查询"/></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 撤消型按钮 结束 --> 
+            <!-- 切换型按钮 开始 -->
+            <div class="para">
+              <h4 class="section-tit">4. 左右滚动等切换型按钮</h4>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td width="116">向左、向右</td>
+                      <td><span class="btn-shift btn-left">&lt;</span></td>
+                      <td><span class="btn-shift btn-right">&gt;</span></td>
+                    </tr>
+                    <tr>
+                      <td>不可用状态</td>
+                      <td><span class="btn-shift btn-left disabled">&lt;</span></td>
+                      <td><span class="btn-shift btn-right disabled">&gt;</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 切换型按钮 结束 --> 
+            <!-- 下载、上传按钮 开始 -->
+            <div class="para">
+              <h4 class="section-tit">5. 下载、上传按钮</h4>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td width="116">上传</td>
+                      <td><div class="file-box">
+                          <form method="post" enctype="multipart/form-data">
+                            <input type="text" name="textfield" id="textfield" class="file-txt" />
+                            <input type="file" name="fileField" class="file-field" id="fileField" size="28" onChange="document.getElementById('textfield').value=this.value" />
+                            <input type="submit" name="submit" class="btn btn-mini btn-act" value="上传" />
+                            <b class="btn btn-ico btn-del-small">取消文件</b>
+                          </form>
+                        </div></td>
+                    </tr>
+                    <tr>
+                      <td>下载</td>
+                      <td><div class="file-box">
+                          <input type="text" class="file-txt disabled" value="关于1+1！=2的论证.doc" disabled/>
+                          <input type="submit" name="submit" class="btn btn-mini btn-act" value="下载" />
+                        </div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 下载、上传按钮 结束 --> 
+            <!-- 图标型小按钮 开始 -->
+            <div class="para">
+              <h4 class="section-tit">7. 图标型小按钮</h4>
+              <div class="remark">
+                <table class="exam" width="100%">
+                  <tbody>
+                    <tr>
+                      <td colspan="4">类名btn是常驻的，然后btn-ico是定义图标型按钮的样式，再后面的btn-xxx是定义这个按钮的大小、背景图标位置。</td>
+                    </tr>
+                    <tr>
+                      <th width="116">迷你型关闭：</th>
+                      <td><b class="btn btn-ico btn-del-mini">迷你型</b></td>
+                      <th width="116">小型的关闭：</th>
+                      <td><b class="btn btn-ico btn-del-small">小型</b></td>
+                    </tr>
+                    <tr>
+                      <th width="116">上拉：</th>
+                      <td><b class="btn btn-ico btn-up">上拉</b></td>
+                      <th width="116">下拉：</th>
+                      <td><b class="btn btn-ico btn-down">下拉</b></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 图标型小按钮 结束 --> 
+          </div>
+        </div>
+        <!-- 按钮组件类 结束 --> 
+        
+        <!-- tab标签切换类 开始-->
+        <div class="section tabs-section" id="Mtab">
+          <h3 class="section-tit">五、tab标签切换类</h3>
+          <div class="section-cot">
+            <div class="para">
+              <h4 class="section-tit">1.tab小园角切换类</h4>
+              <div class="remark">
+                <div class="class-info">
+                  <ul class="tab-small-hd">
+                    <li class="cur">tab1</li>
+                    <li>tab2</li>
+                  </ul>
+                  <div class="clear"></div>
+                  <div class="tab-bd table">1</div>
+                  <div class="tab-bd table" style="display:none;">2</div>
+                </div>
+              </div>
+            </div>
+            <p class="remark">由于tabs标签的个数不确定，所以采用js控制宽度自适应的方法会较好一点。需注意的是<span class="import">标签li的左右边框是否重复</span>。</p>
+            <div class="para">
+              <h4 class="section-tit">2. 3个标签的</h4>
+              <div class="remark">
+                <div class="tab">
+                  <div class="tab-hd">
+                    <ul>
+                      <li class="first cur">编辑培养方案</li>
+                      <li>编辑学分</li>
+                      <li>编辑课程</li>
+                    </ul>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="tab-bd">
+                    <div class="tab-con">第一个内容</div>
+                    <div class="tab-con" style="display:none;">第二个内容</div>
+                    <div class="tab-con" style="display:none;">第三个内容</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="para">
+              <h4 class="section-tit">3. 4个标签的</h4>
+              <div class="remark">
+                <div class="tab">
+                  <div class="tab-hd">
+                    <ul>
+                      <li class="first cur">班级课表</li>
+                      <li>教室课表</li>
+                      <li>教师课表</li>
+                      <li>课程课表</li>
+                    </ul>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="tab-bd">
+                    <div class="tab-con">第一个内容</div>
+                    <div class="tab-con" style="display:none;">第二个内容</div>
+                    <div class="tab-con" style="display:none;">第三个内容</div>
+                    <div class="tab-con" style="display:none;">第四个内容</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="remark">下面的切换，是竖向的tabs了，js和css是不同的，暂时没做自适应宽度。</p>
+            <div class="para">
+              <h4 class="section-tit">3. 竖向的</h4>
+              <div class="remark">
+                <div class="list-box cur">
+                  <div class="list-title">培养目标：<b class="btn btn-ico btn-up-down btn-up">上拉</b></div>
+                  <div class="list-con">
+                    <textarea></textarea>
+                  </div>
+                </div>
+                <div class="list-box">
+                  <div class="list-title">基本要求：<b class="btn btn-ico btn-up-down btn-down">下拉</b></div>
+                  <div class="list-con">
+                    <textarea></textarea>
+                  </div>
+                </div>
+                <div class="list-box">
+                  <div class="list-title">专业方向：<b class="btn btn-ico btn-up-down btn-down">下拉</b></div>
+                  <div class="list-con">
+                    <textarea></textarea>
+                  </div>
+                </div>
+                <div class="list-box">
+                  <div class="list-title">主干课程：<b class="btn btn-ico btn-up-down btn-down">下拉</b></div>
+                  <div class="list-con">
+                    <textarea></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- tab标签切换类 结束--> 
+        
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

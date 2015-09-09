@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>智慧校园系列-前端规范参照表</title>
+<!-- layout.css 为框架、布局和组件类模板样式，经确认之后统一规范的样式才放进来，请不要随意修改。临时新增和自定义样式请写入style.css -->
+<link href="css/layout.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<!-- 真正引用项目时，请不要加载下面的no.css，这只是用来布局参考页面的而已 -->
+<link href="css/no.css" rel="stylesheet"/>
+<script src="js/jquery-1.7.2.min.js"></script>
+<!-- 同理，common.js 为规范类模板样式，经确认之后统一规范的语句才放进来，请不要随意修改。临时新增和自定义语句请写入main.js -->
+<script src="js/common.js"></script>
+<script src="js/main.js"></script>
+<!-- 下面两个js是为弹窗加载的 -->
+<script src="js/jquery.artDialog.source.js"></script>
+<script src="js/iframeTools.source.js"></script>
+</head>
+<body>
+<div class="wisdom-right">
+  <div class="section foreword-section">
+    <h3 class="section-tit">前言</h3>
+    <div class="section-cot">
+      <p class="remark">为节约前端和开发人员编码时间，方便其复用相应框架和组件，现统一制定针对“智慧校园”系列的前端规范说明书。如有不合理之处，请尽早提出并商议修改，一经确定，还请尽量遵循此规范。</p>
+    </div>
+  </div>
+  <!-- 弹窗样式 开始 -->
+  <div class="section dialog-section">
+    <h3 class="section-tit">六、弹窗样式</h3>
+    <div class="section-cot">
+      <p class="remark">首先，请保证页头加载了iframeTools.source.js和jquery.artDialog.source.js，然后，在页头或页尾加上弹窗的js执行语句。</p>
+      <div class="para">
+        <h4 class="section-tit">1. 弹出本页面div</h4>
+        <p class="remark">弹窗内容的div先display：none在本页面合适的地方，通过点击按钮后加载进弹窗里面。为不使页面繁杂冗余，我将<span class="import">弹窗的js执行语句写进main.js里了</span>。在common.js中第148行有一段为弹窗自定义按钮图标绑定的语句，记得要添加。</p>
+        <div class="remark">
+          <table class="exam" width="100%">
+            <tbody>
+              <tr>
+                <td><input type="button" class="btn btn-mini btn-act" value="删除" onclick="askPop();"></td>
+                <td><input type="button" class="btn btn-mini btn-act" value="送审" onclick="banPop();"></td>
+                <td><input type="button" class="btn btn-mini btn-act" value="提交" onclick="okPop();"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 弹窗样式 结束 --> 
+</div> 
+</body>
+</html>

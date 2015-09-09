@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>树形目录</title>
+<!-- layout.css 为框架、布局和组件类模板样式，经确认之后统一规范的样式才放进来，请不要随意修改。临时新增和自定义样式请写入style.css -->
+<link href="css/layout.css" rel="stylesheet"/>
+<!-- 真正引用项目时，请不要加载下面的no.css，这只是用来布局参考页面的而已 -->
+<link href="css/no.css" rel="stylesheet"/>
+<script src="js/jquery-1.7.2.min.js"></script>
+<!-- 同理，common.js 为规范类模板样式，经确认之后统一规范的语句才放进来，请不要随意修改。临时新增和自定义语句请写入main.js -->
+<script src="js/common.js"></script>
+<!-- 引用目录树控件样式和js -->
+<link href="css/ztree/zTreeStyle.css" rel="stylesheet"/>
+<script type="text/javascript" src="js/ztree/jquery.ztree.core-3.5.min.js"></script>
+<!-- 目录树控件需要复选框功能时才需要引用该js -->
+<script type="text/javascript" src="js/ztree/jquery.ztree.excheck-3.5.min.js"></script>
+</head>
+<body>
+<div class="wrap" id="Mback">
+  <div class="container"> <a href="#Mback" class="back-top">回到顶部</a>
+    <div class="header">
+      <h1 class="wisdom-title">前端规范参照表</h1>
+    </div>
+    <div class="wisdom-content">
+      <div class="wisdom-left">
+        <h2 class="wisdom-menu-title">目录</h2>
+        <div class="wisdom-menu-cot">
+          <dl>
+            <dt><a href="layout.html" target="_blank">一、框架说明</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mform">二、表单组件类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mcheck">三、表单验证类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="base.html#Mbtn">四、按钮组件类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="e.html#Mtab">五、tab标签切换类</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="dialog.html">六、弹窗样式</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="ztree.html">七、树目录</a></dt>
+          </dl>
+          <dl>
+            <dt><a href="treeTable.html">八、树目录</a></dt>
+          </dl>
+        </div>
+      </div>
+      <div class="wisdom-right"> 
+        
+        <!-- 弹窗样式 开始 -->
+        <div class="section dialog-section">
+          <h3 class="section-tit">七、树形目录</h3>
+          <div class="section-cot">
+            <p class="remark"></p>
+            <div class="para">
+              <h4 class="section-tit">1. 树形目录</h4>
+              <p class="remark">需要先引入“js/jquery.ztree.core-3.5.min.js” 另外引入样式 "css/ztree/zTreeStyle.css" </p>
+              <div class="remark">
+                <div style="height:300px; width:200px; padding:10px; background:#fff; border:1px solid #d7d7d7; overflow:auto;">
+                  <ul id="treeDemo" class="ztree">
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="para">
+              <h4 class="section-tit">2. 树形目录（含复选功能）</h4>
+              <p class="remark">另外需单独再引入"js/jquery.ztree.excheck-3.5.min.js"</p>
+              <div class="remark">
+                <div style="height:300px; width:200px; padding:10px; background:#fff; border:1px solid #d7d7d7; overflow:auto;">
+                  <ul id="treeDemo2" class="ztree">
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 弹窗样式 结束 --> 
+        
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+		
+	var setting = {
+		view: {
+			showLine: false
+		},
+		data: {
+			simpleData: {
+				enable: true
+			}
+		}
+	};
+  
+	var zNodes =[
+		{ id:1, pId:0, name:"父节点1 - 展开", open:true},
+		{ id:11, pId:1, name:"父节点11 - 折叠"},
+		{ id:111, pId:11, name:"叶子节点111"},
+		{ id:112, pId:11, name:"叶子节点112"},
+		{ id:113, pId:11, name:"叶子节点113"},
+		{ id:114, pId:11, name:"叶子节点114"},
+		{ id:12, pId:1, name:"父节点12 - 折叠"},
+		{ id:121, pId:12, name:"叶子节点121"},
+		{ id:122, pId:12, name:"叶子节点122"},
+		{ id:123, pId:12, name:"叶子节点123"},
+		{ id:124, pId:12, name:"叶子节点124"},
+		{ id:13, pId:1, name:"父节点13 - 没有子节点", isParent:true},
+		{ id:2, pId:0, name:"父节点2 - 折叠"},
+		{ id:21, pId:2, name:"父节点21 - 展开", open:true},
+		{ id:211, pId:21, name:"叶子节点211"},
+		{ id:212, pId:21, name:"叶子节点212"},
+		{ id:213, pId:21, name:"叶子节点213"},
+		{ id:214, pId:21, name:"叶子节点214"},
+		{ id:22, pId:2, name:"父节点22 - 折叠"},
+		{ id:221, pId:22, name:"叶子节点221"},
+		{ id:222, pId:22, name:"叶子节点222"},
+		{ id:223, pId:22, name:"叶子节点223"},
+		{ id:224, pId:22, name:"叶子节点224"},
+		{ id:23, pId:2, name:"父节点23 - 折叠"},
+		{ id:231, pId:23, name:"叶子节点231"},
+		{ id:232, pId:23, name:"叶子节点232"},
+		{ id:233, pId:23, name:"叶子节点233"},
+		{ id:234, pId:23, name:"叶子节点234"},
+		{ id:3, pId:0, name:"父节点3 - 没有子节点", isParent:true}
+	];
+  
+	
+	var setting2 = {
+		view: {
+			showLine: false
+		},
+		check: {
+			enable: true
+		},
+		data: {
+			simpleData: {
+				enable: true
+			}
+		}
+	};
+  
+	var zNodes2 =[
+		{ id:1, pId:0, name:"随意勾选 1", open:true},
+		{ id:11, pId:1, name:"随意勾选 1-1", open:true},
+		{ id:111, pId:11, name:"随意勾选 1-1-1"},
+		{ id:112, pId:11, name:"随意勾选 1-1-2"},
+		{ id:12, pId:1, name:"随意勾选 1-2", open:true},
+		{ id:121, pId:12, name:"随意勾选 1-2-1"},
+		{ id:122, pId:12, name:"随意勾选 1-2-2"},
+		{ id:2, pId:0, name:"随意勾选 2", checked:true, open:true},
+		{ id:21, pId:2, name:"随意勾选 2-1"},
+		{ id:22, pId:2, name:"随意勾选 2-2", open:true},
+		{ id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
+		{ id:222, pId:22, name:"随意勾选 2-2-2"},
+		{ id:23, pId:2, name:"随意勾选 2-3"}
+	];
+	
+	var code;
+	
+	function setCheck() {
+		var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+		py = $("#py").attr("checked")? "p":"",
+		sy = $("#sy").attr("checked")? "s":"",
+		pn = $("#pn").attr("checked")? "p":"",
+		sn = $("#sn").attr("checked")? "s":"",
+		type = { "Y":py + sy, "N":pn + sn};
+		zTree.setting.check.chkboxType = type;
+		showCode('setting.check.chkboxType = { "Y" : "' + type.Y + '", "N" : "' + type.N + '" };');
+	}
+	function showCode(str) {
+		if (!code) code = $("#code");
+		code.empty();
+		code.append("<li>"+str+"</li>");
+	}
+	
+	$(document).ready(function(){
+		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		$.fn.zTree.init($("#treeDemo2"), setting2, zNodes2);
+		setCheck();
+		$("#py").bind("change", setCheck);
+		$("#sy").bind("change", setCheck);
+		$("#pn").bind("change", setCheck);
+		$("#sn").bind("change", setCheck);
+	});
+		
+</script>

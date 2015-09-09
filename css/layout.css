@@ -1,0 +1,1992 @@
+@charset "utf-8";
+/* ======================================================== 布局、框架性样式 开始 ==================================================== */
+/* 全局性基本样式 开始 =================================== */
+*
+{
+	margin: 0 auto;
+}
+html, body
+{
+	height: 100%;
+}
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td
+{
+	margin: 0px;
+	padding: 0px;
+}
+body
+{
+	font: 14px/20px Microsoft YaHei, SimSun, Arial, Helvetica, sans-serif;
+	text-align: center;
+	color: #333;
+	background-color: #e0eef6;
+}
+a
+{
+	color: #217dc2;
+}
+a, a:hover
+{
+	text-decoration: none;
+	outline: none;
+}
+a:hover
+{
+	color: #f89635;
+}
+a:active
+{
+	color: #f88a35;
+}
+input, select, button, textarea
+{
+	vertical-align: middle;
+	outline:none;
+}
+ul, li
+{
+	list-style: none;
+}
+img
+{
+	border: 0;
+	vertical-align: top;
+}
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+	text-align: left;
+}
+table th
+{
+	text-align: right;
+	font-weight: normal;
+}
+/* margin类 */
+.nomp
+{
+	margin: 0px;
+	padding: 0px;
+}
+.m0
+{
+	margin: 0px;
+}
+.mar10
+{
+	margin: 10px;
+}
+.mt10
+{
+	margin-top: 10px;
+}
+.mb10
+{
+	margin-bottom: 10px;
+}
+.ml10
+{
+	margin-left: 10px;
+}
+.mr10
+{
+	margin-right: 10px;
+}
+.mar20
+{
+	margin: 20px;
+}
+.mt20
+{
+	margin-top: 20px;
+}
+.mb20
+{
+	margin-bottom: 20px;
+}
+.ml20
+{
+	margin-left: 20px;
+}
+.mr20
+{
+	margin-right: 20px;
+}
+/* padding类 */
+.p0
+{
+	padding: 0px;
+}
+.pad10
+{
+	padding: 10px;
+}
+.pl10
+{
+	padding-left: 10px;
+}
+.pr10
+{
+	padding-right: 10px;
+}
+.pb10
+{
+	padding-bottom: 10px;
+}
+.pt10
+{
+	padding-top: 10px;
+}
+.pad20
+{
+	padding: 20px;
+}
+.pl20
+{
+	padding-left: 20px;
+}
+.pr20
+{
+	padding-right: 20px;
+}
+.pb20
+{
+	padding-bottom: 20px;
+}
+.pt20
+{
+	padding-top: 20px;
+}
+/* 宽度和浮动类 */
+.w100
+{
+	width: 100px;
+}
+.w120
+{
+	width: 120px;
+}
+.w200
+{
+	width: 200px;
+}
+.fl
+{
+	float: left;
+}
+.fr
+{
+	float: right;
+}
+.fn
+{
+	float: none;
+}
+.tac
+{
+	text-align: center;
+}
+.tar
+{
+	text-align: right;
+}
+.tal
+{
+	text-align: left;
+}
+.bd0
+{
+	border: 0;
+}
+/* 全局性基本样式 结束 =================================== */
+/* 页面大体框架布局样式 开始 ============================== */
+.wrap
+{
+	height: 100%;
+	background: url(../images/top-bg.jpg) repeat-x;
+}
+.container
+{
+	width: 1004px;
+	margin: 0 auto;
+}
+.header
+{
+	height: 90px;
+}
+.content
+{
+	background: #fff url(../images/left-bg.png) left top repeat-y;
+}
+.left-con
+{
+	float: left;
+	width: 210px;
+}
+.right-con
+{
+	float: right;
+	width: 794px;
+	min-height:430px;
+	background: #fff;
+}
+.footer
+{
+	padding: 25px 0;
+	color: #4c5d64;
+	border-top: 3px solid #cbd6e1;
+}
+.clear
+{
+	display: block;
+	clear: both;
+	font-size: 0;
+	line-height: 0;
+	height: 0;
+	overflow: hidden;
+	content: ".";
+}
+/* 页面大体框架布局样式 结束 ============================== */
+/* 页面块级元素布局样式 开始 ============================== */
+/* 头部元素 开始 ----------------------- */
+/* logo 开始 */
+.logo
+{
+	float: left;
+	display: inline;
+	margin-top: 21px;
+	width:231px;
+	height: 48px;
+	background: url(../images/logo.png) no-repeat;
+}
+.logo a
+{
+	display: block;
+	height: 48px;
+}
+/* logo 结束 */
+/* 信息链接 开始 */
+.header-menu
+{
+	float: right;
+	width: 300px;
+	margin: 40px 0 0 0;
+}
+.header-menu li
+{
+	float: right;
+	height: 16px;
+	line-height: 16px;
+	padding-left: 20px;
+	margin-right: 20px;
+	background: url(../images/header-ico.png) no-repeat;
+}
+.header-menu li a
+{
+	color: #fff;
+}
+.header-menu li.home
+{
+	background-position: left top;
+}
+.header-menu li.person
+{
+	background-position: 0 -16px;
+}
+.header-menu li.logout
+{
+	background-position: 0 -32px;
+}
+/* 信息链接 结束 */
+/* 头部元素 结束 ----------------------- */
+/* 内容左侧元素 开始 ------------------- */
+/* 项目系统名 开始 */
+.left-con-header
+{
+	height: 96px;
+	width: 210px;
+	background: url(../images/system-name.gif) no-repeat;
+	border-bottom: 3px #c5702c solid;
+}
+/* 项目系统名 结束 */
+/* 页面级导航 开始 */
+.mould-menu
+{
+	zoom: 1;
+	text-align: left;
+	border-right: 1px solid #e4eaf0;
+}
+.mould-menu a
+{
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+.mould-menu a b
+{
+	position: absolute;
+	font: 0/0 Arial;
+}
+.mould-menu dt
+{
+	height: 60px;
+	padding-left: 50px;
+	line-height: 60px;
+	font-size: 14px;
+	color: #5f5f5f;
+	border-bottom: 1px solid #e4eaf0;
+	background: #f9fafb;
+	cursor: pointer;
+	position: relative;
+}
+.mould-menu dt.color-pink
+{
+	border-left: 3px solid #f4caca;
+}
+.mould-menu dt.color-blue
+{
+	border-left: 3px solid #9bc3f5;
+}
+.mould-menu dt.color-purple
+{
+	border-left: 3px solid #d6c1f0;
+}
+.mould-menu dt.color-green
+{
+	border-left: 3px solid #bbe0bd;
+}
+.mould-menu dt.cur
+{
+	padding-left: 53px;
+	color: #fff;
+	background: #48a4dc;
+	border-bottom: 2px solid #2c84ba;
+	border-left: none;
+}
+.mould-menu dt a
+{
+}
+.mould-menu dt b
+{
+	position: absolute;
+	top: 17px;
+	left: 10px;
+	width: 24px;
+	height: 24px;
+	background: url(../images/mould-menu-ico.png) no-repeat;
+}
+.mould-menu dt b.ico-1
+{
+	background-position: left top
+}
+.mould-menu dt b.ico-2
+{
+	background-position: left -24px;
+}
+.mould-menu dt b.ico-3
+{
+	background-position: left -48px;
+}
+.mould-menu dt b.ico-4
+{
+	background-position: left -72px;
+}
+.mould-menu dt b.ico-5
+{
+	background-position: left -96px;
+}
+.mould-menu dt b.ico-6
+{
+	background-position: left -120px;
+}
+.mould-menu dt b.ico-7
+{
+	background-position: left -144px;
+}
+.mould-menu dt b.ico-8
+{
+	background-position: left -168px;
+}
+.mould-menu dt b.ico-9
+{
+	background-position: left -192px;
+}
+.mould-menu dt b.ico-10
+{
+	background-position: left -216px;
+}
+.mould-menu dt b.ico-11
+{
+	background-position: left -240px;
+}
+.mould-menu dt.cur b.ico-1
+{
+	background-position: -24px top
+}
+.mould-menu dt.cur b.ico-2
+{
+	background-position: -24px -24px;
+}
+.mould-menu dt.cur b.ico-3
+{
+	background-position: -24px -48px;
+}
+.mould-menu dt.cur b.ico-4
+{
+	background-position: -24px -72px;
+}
+.mould-menu dt.cur b.ico-5
+{
+	background-position: -24px -96px;
+}
+.mould-menu dt.cur b.ico-6
+{
+	background-position: -24px -120px;
+}
+.mould-menu dt.cur b.ico-7
+{
+	background-position: -24px -144px;
+}
+.mould-menu dt.cur b.ico-8
+{
+	background-position: -24px -168px;
+}
+.mould-menu dt.cur b.ico-9
+{
+	background-position: -24px -192px;
+}
+.mould-menu dt.cur b.ico-10
+{
+	background-position: -24px -216px;
+}
+.mould-menu dt.cur b.ico-11
+{
+	background-position: -24px -240px;
+}
+.mould-menu dt .cur b
+{
+	background: #fff;
+}
+.mould-menu dd
+{
+	display: none;
+}
+.mould-menu dd a
+{
+	height: 40px;
+	padding-left: 53px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #5f5f5f;
+	background: #fff;
+	border-bottom: 1px solid #e4eaf0;
+}
+.mould-menu dd a:hover
+{
+	background: #b7e9e8;
+}
+.mould-menu dd a.cur
+{
+	color: #fff;
+	background: #57cbc8;
+	border-bottom: 1px solid #4bb3b0;
+}
+/* 页面级导航 结束 */
+/* 内容左侧元素 结束 ------------------- */
+/* 内容右侧元素 开始 ------------------- */
+/* 右侧一级标题 开始 --- */
+.right-con-header
+{
+	height: 56px;
+	border-bottom: 1px solid #d7d7d7;
+	background: #fcfcfc;
+}
+.right-con-header .btn
+{
+	margin-top: 13px;
+	margin-right: 10px;
+}
+.right-con-header h1
+{
+	float: left;
+	height: 53px;
+	line-height: 53px;
+	font-weight: normal;
+	padding: 0 32px;
+	font-size: 14px;
+	border-bottom: 4px solid #fead39;
+}
+/* 返回按钮 开始 */
+.back
+{
+	float:right;
+	height:20px;
+	padding-left:20px;
+	margin: 17px 15px 0 0;
+	font:14px/20px Microsoft YaHei;
+	color:#afafaf;
+	background:url(../images/ico-sprite.png) -40px -297px no-repeat;
+}
+.back:hover
+{
+    color:#fbaa40;
+	background-position:-40px -317px;
+}
+.back:active
+{
+    color:#f29a27;
+	background-position:-40px -337px;
+}
+/* 返回按钮 结束 */
+/* 右侧一级标题 结束 --- */
+/* 筛选条件组件群 开始 --- */
+.filter-con
+{
+	padding: 10px 95px 10px 10px;
+	text-align: left;
+	position: relative;
+	background: #f6f8fa;
+}
+.filter-con table th
+{
+	height: 45px;
+}
+.filter-con.tab-filter
+{
+	background: #fff;
+	border-left: 1px solid #e9e9e9;
+	border-right: 1px solid #e9e9e9;
+}
+.filter-con .btn-srh
+{
+	position: absolute;
+	right: 15px;
+	bottom: 17px;
+}
+/* 筛选条件组件群 结束 --- */
+/* 右侧正式内容区 开始 --- */
+.right-con-bd
+{
+	padding: 0 15px;
+}
+/* 二级标题区域 开始 */
+.main-hd
+{
+	height: 32px;
+	line-height: 32px;
+	text-align: left;
+	padding: 14px 0;
+}
+.main-hd .title
+{
+	display: inline-block;
+	padding-left: 30px;
+	font-size: 14px;
+	line-height: 32px;
+	font-weight: normal;
+	background: url(../images/ico-sprite.png) -35px -30px no-repeat;
+}
+.main-hd .btn
+{
+	float: right;
+	margin-left: 10px;
+}
+/* 二级标题区域 结束 */
+/* 框架性表格 开始 */
+.table-box
+{
+	border:solid #e6ebee;
+	border-width:0 1px;
+	border-top:2px solid #d2d2d2;
+	overflow-y:auto;
+}
+.table-box .table table td
+{
+	min-width:31px;
+}
+.table
+{
+	border-top:2px solid #d2d2d2;
+}
+.table-box .table
+{
+	border-top:none;
+}
+.table table
+{
+	font-size: 12px;
+	border: 1px solid #e6ebee;
+}
+.table thead th
+{
+	background: #fafafa;
+	line-height: 42px;
+	height: 42px;
+	padding:0 5px;
+	font-weight: bold;
+	color: #555;
+	text-align: center;
+	border-bottom: 1px solid #e6ebee;
+}
+.table tbody th
+{
+	background: #fafafa;
+	line-height: 44px;
+	height: 44px;
+	padding:0 5px;
+	text-align: center;
+	border: 1px solid #e6ebee;
+}
+.table tbody td
+{
+	line-height: 38px;
+	height: 38px;
+	padding:0 5px;
+	text-align: center;
+	border: 1px solid #e6ebee;
+}
+.table-box .table th, .table-box .table td
+{
+	white-space: nowrap;
+}
+.odd
+{
+	background-color: #fafafa;
+}
+.highlight
+{
+	background-color: #f4f9fc;
+}
+.bdl-blue
+{
+    background:url(../images/bdl-blue.png) left top repeat-y !important;
+}
+.a-mgl
+{
+	color:#217dc2;
+}
+.a-mgl a
+{
+	margin: 0 5px;
+}
+.table thead .tr-bdr th
+{
+	border: 1px solid #e6ebee;
+}
+.table thead .tr-one th
+{
+	height: 40px;
+	line-height: 40px;
+}
+.table thead .tr-two th
+{
+	height: 24px;
+	line-height: 24px;
+}
+.table thead .tr-three th
+{
+	height: 19px;
+	line-height: 19px;
+	font-weight: normal;
+	color: #333;
+}
+/* 暂无数据 开始 */
+.no-data
+{
+	display:inline-block;
+	width:200px;
+	height:20px;
+	margin:30px auto;
+	padding:90px 50px 90px 170px;
+	text-align:left;
+	font:18px/20px Microsoft YaHei;
+	color:#000; 
+	border:1px solid #7c7c7c;
+	border-radius:5px;
+	background:#fff url(../images/no-data.png) 80px center no-repeat;
+	overflow:hidden;
+}
+/* 暂无数据 结束 */
+/* 树形表格 开始 */
+.acts_as_tree_table tr.expanded td .expander
+{
+	background-image: url(../images/bullet_toggle_minus.png)
+}
+.acts_as_tree_table tr td .expander
+{
+	background-position: left center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	padding: 0;
+}
+tr.collapsed td .expander
+{
+	background-image: url(../images/bullet_toggle_plus.png)
+}
+/* 树形表格 结束 */
+/* 树状结构 按钮样式 */
+table.treetable span.indenter {
+	display: inline-block;
+	margin: 0;
+	padding: 0 !important;
+	width:14px;
+	height:14px;
+	vertical-align: middle;
+}
+table.treetable span.indenter a
+{
+	display:inline-block;
+	width: 14px;
+	height:14px;
+}
+table.treetable tr.collapsed span.indenter a
+{
+	background:url(../images/ico-sprite.png) 0 -300px no-repeat;
+}
+table.treetable tr.expanded span.indenter a
+{
+	background:url(../images/ico-sprite.png) -15px -300px no-repeat;
+}
+/* 框架性表格 结束 */
+/* 翻页定义 开始 */
+.pages
+{
+	height: 32px;
+	padding: 25px 10px 30px;
+}
+.pages .filter-box
+{
+	float: left;
+	margin: 0;
+	line-height: normal;
+}
+.pages .select-default
+{
+	margin-right: 5px;
+	text-align: left;
+}
+.page
+{
+	float: right;
+	height: 27px;
+	padding: 2px 0 3px;
+	text-align: right;
+}
+.page a
+{
+	float: left;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin: 0;
+	line-height: 25px;
+	text-align: center;
+	color: #a9a9a9;
+	border: 1px solid #e7e7e7;
+	border-left: 0;
+}
+.page span
+{
+	float: left;
+	display: inline-block;
+	width: 25px;
+	line-height: 25px;
+	height: 25px;
+	margin: 0;
+	text-align: center;
+	border-right: 1px solid #e7e7e7;
+}
+.page .page-prev, .page .page-next
+{
+	background: url(../images/ico-sprite.png) no-repeat;
+}
+.page .page-prev
+{
+	border-left: 1px solid #e7e7e7;
+	background-position: -30px -60px;
+}
+.page .page-prev:hover
+{
+	background-position: 0 -120px;
+}
+.page .page-next
+{
+	margin-right: 10px;
+	background-position: -30px -90px;
+}
+.page .page-next:hover
+{
+	background-position: -30px -120px;
+}
+.page a:hover
+{
+	color: #fff;
+	background-color: #ffcf8d;
+}
+.page .cur
+{
+	color:#fff;
+	background-color: #feb449;
+}
+.page a.disabled
+{
+	cursor:default;
+	background-color: #fcfcfc;
+}
+.page .page-prev:hover,.page .page-next:hover
+{
+	background-color:#fff;
+}
+.page .page-prev.disabled
+{
+	background-position: -30px -60px;
+}
+.page .page-next.disabled
+{
+	background-position: -30px -90px;
+}
+.page .ipt-text
+{
+	width: 25px;
+	height: 20px;
+	padding: 2px 2px 3px;
+	margin: 0 5px;
+	line-height: 20px;
+	text-align: center;
+	vertical-align: top;
+}
+.page .page-go
+{
+	float: none;
+	width: 27px;
+	margin-left: 5px;
+	border-left: 1px solid #e7e7e7;
+}
+/* 翻页定义 结束 */
+/* 右侧正式内容区 结束 --- */
+/* 内容右侧元素 结束 ------------------- */
+/* 页面块级元素布局样式 结束 ============================== */
+/* ======================================================== 布局、框架性样式 结束 ==================================================== */
+/* ======================================================== 组件类样式 开始  ======================================================== */
+/* 表单系列 ----------------------- */
+.filter-box
+{
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+}
+/* 输入框样式 开始 */
+.ipt-text
+{
+	width: 190px;
+	height: 22px;
+	padding: 4px 5px;
+	font: 14px/22px Microsoft YaHei;
+	color: #666;
+	border: 1px solid #d6d6d6;
+	outline: none;
+}
+.ipt-text.disabled
+{
+	color: #b3b3b3;
+	background: #fff;
+}
+/* 输入框样式 结束 */
+/* 下拉框样式 开始 */
+.single-select ol, ul
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.single-select
+{
+	position: relative;
+	display: inline-block;
+	font-family: Microsoft YaHei;
+	color: #666;
+	font-size: 14px;
+	text-align: left;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.single-select .boxwrap
+{
+	display: inline-block;
+	width: 200px;
+	border: solid 1px #d6d6d6;
+	vertical-align: middle;
+}
+.single-select .boxwrap.blur, .single-select .boxwrap.blur ul
+{
+	border: solid 1px #595959;
+}
+.single-select .select-tit
+{
+	position: relative;
+	display: block;
+	padding: 0 36px 0 5px;
+	line-height: 30px;
+	height: 30px;
+	text-decoration: none;
+	background: #fff;
+	word-break: break-all;
+	color: #666;
+	overflow: hidden;
+}
+.single-select .select-tit span
+{
+	display: inline-block;
+	height: 30px;
+}
+.single-select .select-tit i
+{
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: url(../images/ico-sprite.png) 0 -90px no-repeat;
+}
+.single-select .select-items
+{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 31px;
+}
+.select-up .select-items
+{
+	top:auto;
+	bottom:31px;
+}
+.single-select .select-items ul
+{
+	position: relative;
+	width: 200px;
+	max-height: 130px;
+	border: 1px solid #d6d6d6;
+	background: #fff;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.single-select .select-items ul li
+{
+	display: block;
+	padding-left: 5px;
+	line-height: 26px;
+	height: 26px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.single-select .select-items ul li.selected
+{
+	background: #d4edfe;
+}
+.single-select .select-items ul li:hover
+{
+	color: #fff;
+	background: #65abda;
+}
+/* 下拉框样式 结束 */
+/* 下拉控件样式 开始 */
+.drop-down 
+{
+	position:relative;
+	display:inline-block;
+}
+.drop-down .down-ico
+{
+	position:absolute;
+	right:8px;
+	top:50%;
+	margin-top:-8px;
+	display:inline-block;
+	width:16px;
+	height:16px;
+	cursor:pointer;
+	background:url(../images/ico-sprite.png) 0 -320px no-repeat;
+}
+.down-ico.disabled
+{
+	cursor:default;
+	background:url(../images/ico-sprite.png) -18px -320px no-repeat;
+}
+/* 下拉控件样式 结束 */
+/* 搜索框样式 开始 */
+.search
+{
+	position: relative;
+	display: inline-block;
+	width: 202px;
+}
+.search .ipt-text
+{
+	width: 163px;
+	padding-right: 32px;
+}
+.search label
+{
+	position: absolute;
+	top: 1px;
+	left: 5px;
+	line-height: 30px;
+}
+.search .btn-sech
+{
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	font: 0/0 Arial;
+	background: url(../images/ico-sprite.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+.search .btn-sech:hover
+{
+	background-position: 0 -30px;
+}
+.search.disabled
+{
+	color: #b3b3b3;
+}
+.search.disabled input
+{
+	background: #fff;
+}
+.search.disabled .btn-sech
+{
+	background-position: 0 -60px;
+	cursor: default;
+}
+/* 搜索框样式 结束 */
+/* 文本域 开始 */
+textarea
+{
+	padding: 0 5px;
+	font: 14px/22px Microsoft YaHei;
+	color: #666;
+	width: 600px;
+	height: 66px;
+	border: 1px solid #d6d6d6;
+	background: #fff;
+	outline: none;
+	resize: none;
+}
+textarea.disabled
+{
+	color: #b3b3b3;
+	background: #fff;
+}
+/* 文本域 结束 */
+/* 单选、复选框 开始 */
+.radio, .ckbox
+{
+	display:inline-block;
+	height: 20px;
+	line-height: 20px;
+	font-weight: normal;
+	background: url(../images/ico-sprite.png) -41px -146px no-repeat;
+	cursor: pointer;
+	outline:none;
+}
+.radio-ed
+{
+	background-position: -41px -176px;
+}
+.radio.disabled
+{
+	color: #b3b3b3;
+	cursor: default;
+}
+.radio input, .ckbox input
+{
+	margin-right: 3px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+}
+.radio.disabled input
+{
+	cursor: default;
+}
+.ckbox
+{
+	background-position: -41px -206px;
+}
+.ckbox-ed
+{
+	background-position: -41px -236px;
+}
+.ckbox.disabled
+{
+	color: #b3b3b3;
+	cursor: default;
+}
+.ckbox.disabled input
+{
+	cursor: default;
+}
+/* 单选、复选框 结束 */
+/* 表单系列 结束 ----------------------- */
+/* 表单验证类 开始 --------------------- */
+.pst-rela
+{
+	position: relative;
+}
+.tips-text
+{
+	position: absolute;
+	width: 160px;
+	min-height: 20px;
+	margin-top: 5px;
+	padding: 5px 15px 5px 35px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #ff8a00;
+	border: 1px solid #fbcb8e;
+	background: #fff9e8;
+	z-index: 1000;
+	cursor: pointer;
+}
+.tips-text b
+{
+	position: absolute;
+	display: inline-block;
+	font: 0/0 Arial;
+	background: url(../images/ico-sprite.png) no-repeat;
+}
+.tips-text .ico-left
+{
+	left: 8px;
+	top: 50%;
+	margin-top: -8px;
+	width: 16px;
+	height: 16px;
+	background-position: -35px 0;
+}
+.tips-text .ico-top
+{
+	top: -5px;
+	left: 5px;
+	width: 9px;
+	height: 5px;
+	background-position: -35px -20px;
+}
+/* 表单验证类 结束 --------------------- */
+/* 按钮系列 开始----------------------- */
+.btn
+{
+	display: inline-block;
+	font-size:14px;
+	font-family: Microsoft YaHei;
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	text-align: center;
+	outline: none;
+	cursor: pointer;
+}
+.btn-mini
+{
+	padding:0 26px;
+	height: 28px;
+	line-height: 26px;
+}
+.btn-small
+{
+	padding:0 26px;
+	height: 32px;
+	line-height: 30px;
+}
+.btn-default
+{
+	padding:0 26px;
+	height: 35px;
+	line-height: 33px;
+}
+.btn-big
+{
+	padding:0 36px;
+	height: 40px;
+	line-height: 38px;
+}
+/* 功能型按钮 开始 */
+.btn-act
+{
+	background: #48a4dc;
+}
+.btn-act:hover
+{
+	background: #fbaa40;
+}
+.btn-act:active
+{
+	background: #f29a27;
+}
+.btn-act.disabled
+{
+	background: #c6c6c6;
+	cursor: default;
+}
+/* 功能型按钮 结束 */
+/* 存储型按钮 开始 */
+.btn-save
+{
+	border-bottom: 2px solid #2776a6;
+	background: #48a4dc;
+}
+.btn-save.btn-mini
+{
+	height: 30px;
+	line-height: 28px;
+}
+.btn-save.btn-small
+{
+	height: 34px;
+	line-height: 32px;
+}
+.btn-save.btn-default
+{
+	height: 37px;
+	line-height: 35px;
+}
+.btn-save.btn-big
+{
+	height: 42px;
+	line-height: 40px;
+}
+.btn-save:hover
+{
+	border-bottom-color: #d3841e;
+	background: #fbaa40;
+}
+.btn-save:active
+{
+	border-bottom-color: #c27511;
+	background: #f29a27;
+}
+.btn-save.disabled
+{
+	border-bottom-color: #b7b7b7;
+	background: #c6c6c6;
+	cursor: default;
+}
+/* 存储型按钮 结束 */
+/* 查询按钮 开始 */
+.btn-srh
+{
+    width:80px;
+	height:32px;
+	line-height:30px;
+	background:#50ccad;	
+}
+.btn-srh:hover
+{
+	background:#43bfa0;
+}
+.btn-srh:active
+{
+	background:#30b090;
+}
+/* 查询按钮 结束 */
+/* 切换型按钮 开始 */
+.btn-shift
+{
+	display: inline-block;
+	width: 62px;
+	height: 25px;
+	font: 20px/25px Simsun;
+	color: #d3d3d3;
+	text-align: center;
+	border: 2px solid #e7e7e7;
+	background: #fff;
+	cursor: pointer;
+}
+.btn-shift:hover
+{
+	color: #fff;
+	border-color: #ffb658;
+	background: #ffb658;
+}
+.btn-shift:active
+{
+	color: #fff;
+	border-color: #ffa736;
+	background: #ffa736;
+}
+.btn-shift.disabled
+{
+	color: #efefef;
+	border-color: #efefef;
+	background: #fff;
+}
+/* 切换型按钮 结束 */
+/* 上传、下载 按钮 开始 */
+.file-box
+{
+	position: relative;
+	display:inline-block;
+	width: 355px;
+	line-height:28px;
+}
+.file-txt
+{
+	width: 220px;
+	height: 22px;
+	padding: 3px 35px 3px 5px;
+	font: 13px/22px Microsoft YaHei;
+	color: #555;
+	background: #e4f5fc;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.file-txt.disabled
+{
+	color: #4186c5;
+	cursor: default;
+}
+.file-field
+{
+	position: absolute;
+	top: 2px;
+	left: 0;
+	height: 28px;
+	width: 345px;
+	opacity: 0;
+ filter:alpha(opacity:0);
+	cursor: pointer;
+}
+.file-box .btn-del-small
+{
+	position: absolute;
+	top: 3px;
+	left: 230px;
+	z-index: 2;
+}
+/* 上传、下载 按钮 结束 */
+/* 图标型小按钮 开始 */
+.btn-ico
+{
+	border-radius: 0;
+	text-indent: -999px;
+	overflow: hidden;
+	vertical-align: middle;
+	background: url(../images/ico-sprite.png) no-repeat;
+}
+.btn-del-small
+{
+	width: 24px;
+	height: 24px;
+	background-position: 0 -150px;
+}
+.btn-del-small:hover
+{
+	background-position: 0 -175px;
+}
+.btn-del-mini
+{
+	width: 21px;
+	height: 21px;
+	background-position: 0 -200px;
+}
+.btn-up, .btn-down
+{
+	width: 22px;
+	height: 22px;
+}
+.btn-down
+{
+	background-position: 0 -225px;
+}
+.btn-up
+{
+	background-position: 0 -250px;
+}
+/* 图标型小按钮 结束 */
+/* 按钮系列 结束----------------------- */
+/* tab标签切换类 开始------------------ */
+/* 左右型 */
+.tab
+{
+	background: #fff;
+}
+.tab-hd
+{
+	border: solid #d7d7d7;
+	border-width: 1px 1px 0;
+	background:#f5f5f5;
+}
+.tab-hd ul li
+{
+	float: left;
+	display: inline-block;
+	height: 46px;
+	font: 14px/46px Microsoft YaHei;
+	color: #666;
+	text-align: center;
+	border: solid #d7d7d7;
+	border-width: 0 0 1px 1px;
+	background: #f5f5f5;
+	cursor: pointer;
+}
+.tab-hd ul li.first
+{
+	border-left: none;
+}
+.tab-hd ul li.cur
+{
+	height: 43px;
+	line-height: 40px;
+	color: #ffa748;
+	border-top: 3px solid #ffa748;
+	border-bottom: 1px solid #fff;
+	background: #fff;
+}
+.tab-hd ul li:hover
+{
+	color: #ffa748;
+}
+.tab-bd .tab-con
+{
+	border:solid #d7d7d7;
+	border-width:0 1px 1px;
+}
+/* 上下拉型 */
+.list-box
+{
+	text-align: left;
+	margin-top: -1px;
+}
+.list-box .list-title
+{
+	height: 40px;
+	padding: 0 12px 0 15px;
+	line-height: 40px;
+	border: 1px solid #d7d7d7;
+	background: #fafafa;
+}
+.list-box.cur .list-title
+{
+	background: #fcf9e4;
+	color: #f5a556;
+}
+.list-box .list-title .btn-up-down
+{
+	float: right;
+	margin-top: 9px;
+}
+.list-box .list-con
+{
+	display: none;
+	padding:0 5px;
+	border: solid #d7d7d7;
+	border-width: 0 1px 1px;
+}
+.list-box.cur .list-con
+{
+	display: block;
+}
+.list-box .list-con textarea
+{
+	width:100%;
+	padding:0;
+	height: 220px;
+	border: none;
+}
+.list-title .file-box .btn-del-small
+{
+	margin: 0;
+}
+/* tab标签切换类 结束 ------------------ */
+/* 弹窗样式 开始 ---------------------- */
+.aui_outer
+{
+	text-align: left;
+}
+table.aui_border, table.aui_dialog
+{
+	border:0;
+	border-collapse: collapse;
+	margin: 0;
+	width: auto;
+}
+table.aui_dialog
+{
+	width: 100%;
+	background-color:#fff\9;	
+	background-color:transparent\9\0;		
+}
+.aui_state_noTitle table.aui_dialog
+{
+	width:auto;
+}
+.aui_nw, .aui_n, .aui_ne, .aui_w, .aui_c, .aui_e, .aui_sw, .aui_s, .aui_se, .aui_header, .aui_tdIcon, .aui_main, .aui_footer
+{
+	padding: 0;
+}
+.aui_state_focus .aui_dialog 
+{
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+.aui_title
+{
+	height: 53px;
+	font-size:18px;
+	line-height: 53px;
+	padding-left: 17px;
+	color: #fff;
+	border-bottom: 2px solid #2880b7;
+	background-color:#48a4dc;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.aui_state_focus .aui_title
+{
+	color: #fff;
+}
+.aui_state_noTitle .aui_title
+{
+	display: none;
+}
+.aui_close, .aui_state_noTitle .aui_close
+{
+	position: absolute;  
+	right: 13px;
+	top: 18px;
+	width: 17px;
+	height:17px;
+	display: inline-block;
+	font:0/0 Arial;
+	text-indent:-999px;
+	overflow:hidden;
+	background: url(../images/ico-sprite.png) 0 -275px;
+	z-index:20;
+}
+.aui_state_noTitle .aui_close
+{
+	top:15px;
+	right:15px;
+}
+.aui_close:hover, .aui_state_noTitle .aui_close:hover
+{
+	background: url(../images/ico-sprite.png) -19px -275px;
+}
+.aui_close:active, .aui_state_noTitle .aui_close:active
+{
+	background: url(../images/ico-sprite.png) -38px -275px;
+}
+.aui_main
+{
+	min-width: 9em;
+}
+.aui_content
+{
+	border: none;
+	display: inline-block;
+	text-align: left;
+}
+.aui_content.aui_state_full
+{
+	display: block;
+	height: 100%;
+	margin: 0;
+	padding: 0 !important;
+	width: 100%;
+}
+.aui_loading
+{
+	background: url("") no-repeat scroll center center rgba(0, 0, 0, 0);
+	height: 32px;
+	overflow: hidden;
+	text-align: left;
+	text-indent: -999em;
+	width: 96px;
+}
+.aui_icon
+{
+	vertical-align: middle;
+}
+.aui_icon div
+{
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 48px;
+	margin: 10px 0 10px 10px;
+	width: 48px;
+}
+/* 定义按钮样式 开始 ------ */
+.aui_buttons
+{
+	padding: 14px 0 15px;
+	text-align: center;
+	white-space: nowrap;
+	background: #f8fafa;
+}
+.aui_state_noTitle .aui_buttons
+{
+	background:#fff;
+}
+.aui_buttons button
+{
+	display: inline-block;
+	padding:0 26px;
+	height: 37px;
+	margin:0 30px;
+	font:14px/35px Microsoft YaHei;
+	color: #fff;
+	letter-spacing: 2px;
+	border:solid #2776a6;
+	border-width:0 0 2px;
+	text-align: center;
+	background:#48a4dc;
+	border-radius:3px;
+	outline: none;
+	cursor: pointer;
+}
+.aui_buttons button:focus
+{
+	outline: 0 none;
+}
+.aui_buttons button:hover
+{
+	color: #fff;
+	border-bottom-color: #d3841e;
+	background: #fbaa40;
+}
+.aui_buttons button:active
+{
+	color: #fff;
+	border-bottom-color: #c27511;
+	background: #f29a27;
+}
+.aui_buttons button[disabled]
+{
+	color: #fff;
+	border-bottom-color: #b7b7b7;
+	background: #c6c6c6;
+	cursor: default;
+}
+.aui_state_noTitle .aui_buttons
+{
+	width:477px;
+	border-radius:0 0 5px 5px;
+}
+/* 定义按钮样式 结束 --- */
+.aui_inner
+{
+	background:#fff;
+}
+
+.aui_nw, .aui_ne, .aui_sw, .aui_se
+{
+	height: 0;
+	width: 0;
+}
+.aui_state_drag .aui_outer, .aui_outer:active
+{
+	box-shadow: none;
+}
+.aui_titleBar
+{
+	height: 100%;
+	position: relative;
+}
+.aui_state_drag .aui_titleBar
+{
+	box-shadow: none;
+}
+
+.aui_close:active
+{
+	box-shadow: none;
+}
+.aui_state_noTitle .aui_nw, .aui_state_noTitle .aui_ne, .aui_state_noTitle .aui_sw, .aui_state_noTitle .aui_se
+{
+	height: 0;
+	width: 0;
+}
+.aui_state_noTitle .aui_inner
+{
+	background: none;
+	border:none;
+}
+.aui_state_noTitle .aui_outer
+{
+	border: 0 none;
+	box-shadow: none;
+}
+.aui_state_noTitle .aui_nw, .aui_state_noTitle .aui_n, .aui_state_noTitle .aui_ne, .aui_state_noTitle .aui_w, .aui_state_noTitle .aui_e, .aui_state_noTitle .aui_sw, .aui_state_noTitle .aui_s, .aui_state_noTitle .aui_se
+{
+	background: none;
+}
+.aui_state_noTitle .aui_titleBar
+{
+	bottom: 0;
+}
+/* 3种提示信息 弹出窗 */
+.tips-title
+{
+	position:relative;
+	width: 477px;
+	height:166px;
+	text-align: center;
+	border-radius:5px 5px 0 0;
+}
+.tips-title .close
+{
+	position: absolute;  
+	right: 15px;
+	top: 16px;
+	width: 17px;
+	height:17px;
+	display: inline-block;
+	font:0/0 Arial;
+	text-indent:-999px;
+	overflow:hidden;
+	background: url(../images/ico-sprite.png) 0 -275px;
+	cursor:pointer;
+}
+.tips-title .close:hover
+{
+	background: url(../images/ico-sprite.png) -19px -275px;
+}
+.tips-title .close:active
+{
+	background: url(../images/ico-sprite.png) -38px -275px;
+}
+.tips-title h3
+{
+	display:inline-block;
+	width:145px;
+	height:130px;
+	margin: 32px 0 0 50px;
+	background:url(../images/tips-title.png) no-repeat;
+}
+.tips-ask.tips-title
+{
+	background:#35b3ea;
+}
+.tips-ask.tips-title h3
+{
+	background-position:0 -130px;
+}
+.tips-ok.tips-title
+{
+	background:#2fc089;
+}
+.tips-ok.tips-title h3
+{
+	background-position:0 0;
+}
+.tips-ban.tips-title
+{
+	background:#f58347;
+}
+.tips-ban.tips-title h3
+{
+	background-position:0 -260px;
+}
+.tips-cot
+{
+	width:477px;
+	background:#fff;
+}
+.tips-cot table
+{
+	width:100%;
+}
+.tips-cot table td
+{
+	text-align:center;
+	height:85px;
+	line-height:24px;
+	padding:0 50px;
+}
+/* 弹窗样式 结束 ---------------------- */
+
+
+
+/* ztree树结构 结束 ---------------------- */
+.group-og{border:1px solid #d7d7d7; height:390px;}
+.group-og .l-tree{float: left; padding: 12px 0 52px 90px; text-align: left;}
+.group-og .l-tree .search .ipt-text{width: 183px!important;}
+.group-og .l-tree .search .btn-sech{right: -18px;}
+.group-og .org-left{width: 238px;height: 280px;margin-top: 5px; margin-left: -8px;}
+.group-og .c-btns{width: 110px; padding-top: 130px; float: left;}
+.group-og .c-btns span{font-size: 14px;}
+.group-og .c-btns .btn-left{margin-bottom: 5px;}
+
+.group-og .r-tree{float: left;}
+.group-og .r-tree .focu-title{height: 38px;line-height: 38px;}
+.group-og .tree-buttons{float: left; width: 100%; height: 54px; background:#f8fafa; border-top: 1px solid #ddd; margin-top: 12px;}
+.group-og .tree-buttons input{margin: 8px 10px 0 0;}
+.group-og .job-choose{border: 1px solid #e6e6e6; width: 240px; padding:10px 0 20px 10px;}
+
+/* ztree树结构  结束 ---------------------- */
+/* 滚动条插件样式 开始 */
+/*滚动条*/
+.scroll-pane
+{
+	border: 1px solid #e1e1e1;
+	outline: none;
+}
+.jspContainer
+{
+	overflow: hidden;
+	position: relative; 
+}
+.jspPane
+{
+	position: absolute;
+}
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 16px;
+	height: 100%;
+	background: #fcfcfc;
+}
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: #fcfcfc;
+}
+.jspVerticalBar *, .jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+.jspCap
+{
+	display: none;
+}
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+.jspTrack
+{
+	position: relative;
+}
+.jspDrag
+{
+	position: relative;
+	top: 0;
+	left: 0;
+	background: #e4e4e4;
+	cursor: pointer;
+}
+.jspDrag.jspActive
+{
+	background: #c4c4c4;
+}
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 15px;
+}
+.jspArrow
+{
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+.jspArrow.jspDisabled
+{
+	cursor: default;
+}
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 14px;
+}
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+.jspArrow
+{
+	background: url(../images/arror.png) no-repeat;
+}
+.jspArrowUp
+{
+	background-position: -15px -15px;
+}
+.jspArrowUp.jspActive
+{
+	background-position: -30px -15px;
+}
+.jspArrowUp.jspDisabled
+{
+	background-position: -15px -15px;
+}
+.jspArrowDown
+{
+	background-position: 0 -15px;
+}
+.jspArrowDown.jspActive
+{
+	background-position: -45px -15px;
+}
+.jspArrowDown.jspDisabled
+{
+	background-position: 0 -15px;
+}
+.jspArrowLeft
+{
+	background-position: 0 0;
+}
+.jspArrowLeft.jspActive
+{
+	background-position: -32px 0;
+}
+.jspArrowLeft.jspDisabled
+{
+	background-position: 0 0;
+}
+.jspArrowRight
+{
+	background-position: -16px 0;
+}
+.jspArrowRight.jspActive
+{
+	background-position: -48px 0;
+}
+.jspArrowRight.jspDisabled
+{
+	background-position: -16px 0;
+}
+.jspVerticalBar .jspTrack, .jspArrowUp, .jspArrowDown
+{
+	border-left: 1px solid #e1e1e1;
+}
+.jspHorizontalBar .jspTrack, .jspArrowLeft, .jspArrowRight
+{
+	border-top: 1px solid #e1e1e1;
+}
+
+/* 滚动条插件样式 结束 */
+/* ======================================================== 组件类样式 结束  ======================================================== */
